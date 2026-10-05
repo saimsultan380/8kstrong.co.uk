@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { BrandIconGradient } from "@/components/brand-icon-gradient";
+import SiteBackground from "@/components/site-background";
 import ParticlesBg from "@/components/ui/particles-bg";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteJsonLd } from "@/lib/breadcrumbs";
@@ -44,6 +46,18 @@ export default function RootLayout({
     >
       <head>
         <link rel="preload" href="/vendor/particles.min.js" as="script" />
+        <link
+          rel="preload"
+          href="/strong8k-mobile-bg.jpeg"
+          as="image"
+          media="(max-width: 768px)"
+        />
+        <link
+          rel="preload"
+          href="/strong8k-dekstop-bg.jpeg"
+          as="image"
+          media="(min-width: 769px)"
+        />
         <JsonLd data={siteJsonLd()} />
       </head>
       <body className="relative min-h-full flex flex-col bg-black text-white">
@@ -54,7 +68,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <SiteBackground />
           <ParticlesBg />
+          <BrandIconGradient />
           <div className="relative z-10 flex min-h-full flex-1 flex-col bg-transparent">
             {children}
           </div>

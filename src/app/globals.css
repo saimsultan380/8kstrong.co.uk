@@ -99,7 +99,7 @@
   --hero-blush-right: transparent;
   --hero-center-glow: transparent;
   --hero-grid: transparent;
-  --hero-muted: rgba(255, 255, 255, 0.62);
+  --hero-muted: rgba(255, 255, 255, 0.82);
   --hero-pill-bg: rgba(212, 168, 75, 0.08);
   --hero-pill-border: rgba(212, 168, 75, 0.35);
   --hero-pill-text: #f5e6a3;
@@ -128,20 +128,44 @@
   --hero-stats-bg: transparent;
   --hero-stats-label: rgba(255, 255, 255, 0.55);
   --hero-stats-value-shadow: none;
-  --hero-nav-bg: rgba(0, 0, 0, 0.72);
-  --hero-nav-border: rgba(255, 255, 255, 0.1);
-  --hero-nav-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.015);
+  --hero-nav-bg: var(--glass-bg);
+  --hero-nav-border: transparent;
+  --hero-nav-shadow: var(--glass-shadow);
   --hero-nav-text: #ffffff;
   --hero-nav-link: rgba(255, 255, 255, 0.72);
 
+  /* Site scrim over hero photo (between image and mesh) */
+  --site-scrim:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.48) 45%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+
+  /* Shared frosted glass — header + all cards (strong blur like free-trial card) */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-blur: 40px;
+  --glass-radius: 20px;
+  --glass-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover:
+    0 16px 48px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  --glass-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --glass-accent-ring: 0 0 0 1px rgba(212, 168, 75, 0.55);
+
   /* Features */
-  --feature-card-bg: transparent;
-  --feature-card-border: rgba(212, 168, 75, 0.28);
-  --feature-card-shadow: none;
-  --feature-icon-bg: transparent;
-  --feature-icon-border: rgba(212, 168, 75, 0.4);
+  --feature-card-bg: var(--glass-bg);
+  --feature-card-border: transparent;
+  --feature-card-shadow: var(--glass-shadow);
+  --feature-icon-bg: rgba(255, 255, 255, 0.08);
+  --feature-icon-border: transparent;
   --feature-heading: #d4a84b;
-  --feature-body: rgba(255, 255, 255, 0.58);
+  --feature-body: rgba(255, 255, 255, 0.86);
   --feature-divider: rgba(212, 168, 75, 0.35);
   --feature-cta-bg: transparent;
   --feature-cta-border: rgba(212, 168, 75, 0.28);
@@ -160,6 +184,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
   }
 
   .bg-gradient-brand {
@@ -167,10 +193,122 @@
   }
 
   .icon-gradient-brand {
-    color: transparent;
-    background: var(--grad-text);
-    -webkit-background-clip: text;
-    background-clip: text;
+    stroke: url(#brand-icon-gradient) !important;
+    color: #d4a84b;
+  }
+
+  .glass-card {
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border-radius: var(--glass-radius);
+    border: none;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card-interactive {
+    transition:
+      transform 0.75s var(--glass-ease),
+      box-shadow 0.75s var(--glass-ease),
+      border-color 0.75s var(--glass-ease);
+  }
+
+  @media (hover: hover) {
+    .glass-card-interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+  }
+
+  .glass-nav {
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border-radius: var(--glass-radius);
+    border: none;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-icon {
+    background-color: var(--feature-icon-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    border: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+@layer components {
+  /* Panels that use card tokens in inline styles */
+  [style*="var(--feature-card-bg)"] {
+    background-color: var(--glass-bg) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    border-radius: var(--glass-radius);
+    border: none !important;
+    box-shadow: var(--glass-shadow);
+    transition:
+      transform 0.75s var(--glass-ease),
+      box-shadow 0.75s var(--glass-ease);
+  }
+
+  @media (hover: hover) {
+    :is(div, a, form, article)[style*="var(--feature-card-bg)"]:not(.glass-no-hover):hover {
+      transform: translateY(-4px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+
+    a.rounded-2xl.border[style*="feature-card-border"]:hover,
+    a.rounded-xl.border[style*="feature-card-border"]:hover {
+      box-shadow: var(--glass-shadow-hover), var(--glass-accent-ring);
+    }
+  }
+
+  /* Inline transparent bg must not punch holes through glass panels */
+  [style*="feature-card-border"][style*="transparent"] {
+    background-color: var(--glass-bg) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    box-shadow: var(--glass-shadow);
+  }
+
+  :is(div, a, form, article):is(.rounded-2xl, .rounded-xl).border[style*="feature-card-border"] {
+    background-color: var(--glass-bg) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    border-radius: var(--glass-radius);
+    border: none !important;
+    box-shadow: var(--glass-shadow);
+    transition:
+      transform 0.75s var(--glass-ease),
+      box-shadow 0.75s var(--glass-ease);
+  }
+
+  @media (hover: hover) {
+    :is(div, a, form, article):is(.rounded-2xl, .rounded-xl).border[style*="feature-card-border"]:not(
+        .glass-no-hover
+      ):hover {
+      transform: translateY(-4px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+  }
+
+  .glass-no-hover:hover {
+    transform: none !important;
+  }
+
+  :is(div, span)[class*="rounded-xl"].border[style*="feature-icon-border"],
+  :is(div, span)[class*="rounded-full"].border[style*="feature-icon-border"] {
+    background-color: var(--feature-icon-bg) !important;
+    background: var(--feature-icon-bg) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    border: none !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -197,10 +335,52 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent !important;
+    text-shadow: none;
+  }
+
+  section h3,
+  section h4,
+  section p,
+  section li,
+  section td,
+  section th,
+  section label span,
+  section figcaption {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  }
+
+  section .text-gradient-brand,
+  section p.text-gradient-brand,
+  section a.text-gradient-brand,
+  section span.text-gradient-brand {
+    text-shadow: none !important;
+    -webkit-text-fill-color: transparent;
   }
 }
 
 /* Network mesh: soft fade-in once particles.js boots */
+.site-bg-scrim {
+  background: var(--site-scrim);
+  pointer-events: none;
+}
+
+/* Lucide / SVG icons tinted with brand accent → same gold gradient as titles */
+svg.lucide[style*="hero-accent"],
+svg[style*="hero-accent"].lucide,
+svg.lucide.icon-gradient-brand,
+.icon-gradient-brand {
+  stroke: url(#brand-icon-gradient) !important;
+  color: #d4a84b;
+}
+
+/* Icon wells: child SVG inherits the title gradient */
+div[style*="feature-icon-bg"] > svg,
+div[style*="feature-icon-border"] > svg,
+span[style*="feature-icon-bg"] > svg,
+span[style*="feature-icon-border"] > svg {
+  stroke: url(#brand-icon-gradient) !important;
+}
+
 .particles-mesh {
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -229,11 +409,16 @@ span[style*="hero-cta-primary-bg"] {
   color: var(--hero-cta-primary-fg) !important;
 }
 
-/* Global override to clean up icon boxes to be minimal, transparent, and round (non-AI style) */
+/* Icon wells: frosted glass, keep circular where used */
 div[style*="feature-icon-bg"] {
-  background-color: transparent !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  background-color: var(--feature-icon-bg) !important;
+  background: var(--feature-icon-bg) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border: none !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08) !important;
   border-radius: 9999px !important;
 }
 
@@ -294,12 +479,27 @@ button[style*="hero-cta-primary-bg"]::after {
     filter: none !important;
     transform: none !important;
   }
+
+  .glass-card-interactive:hover,
+  :is(div, a, form, article):is(.rounded-2xl, .rounded-xl).border[style*="feature-card-border"]:hover {
+    transform: none;
+  }
 }
 
-/* Telvis blur-reveal GPU hint */
+/* Telvis blur-reveal — no permanent transform (breaks glass backdrop-filter) */
 .telvis-motion-reveal {
   backface-visibility: hidden;
-  transform: translateZ(0);
+}
+
+.telvis-motion-reveal.motion-settled {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Sections used isolate which makes backdrop-filter ignore the fixed site bg */
+main section.isolate,
+section.isolate {
+  isolation: auto;
 }
 
 .telvis-h1-reveal-line {

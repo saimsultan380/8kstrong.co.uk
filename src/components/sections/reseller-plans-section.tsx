@@ -116,10 +116,11 @@ export function ResellerPlansSection() {
               <div
                 className="relative flex h-full flex-col rounded-xl border px-6 py-7"
                 style={{
-                  borderColor: pack.highlight
-                    ? "var(--hero-accent)"
-                    : "var(--feature-card-border)",
-                  backgroundColor: "transparent",
+                  borderColor: "var(--feature-card-border)",
+                  backgroundColor: "var(--feature-card-bg)",
+                  boxShadow: pack.highlight
+                    ? "var(--feature-card-shadow), var(--glass-accent-ring)"
+                    : "var(--feature-card-shadow)",
                 }}
               >
                 {pack.highlight ? (
@@ -208,8 +209,12 @@ export function ResellerPlansSection() {
               accounts should be confirmed with support before you create the line.
             </p>
             <div
-              className="overflow-hidden rounded-2xl border"
-              style={{ borderColor: "var(--feature-card-border)" }}
+              className="glass-no-hover overflow-hidden rounded-2xl border"
+              style={{
+                borderColor: "var(--feature-card-border)",
+                backgroundColor: "var(--feature-card-bg)",
+                boxShadow: "var(--feature-card-shadow)",
+              }}
             >
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[420px] text-left text-sm sm:text-[15px]">

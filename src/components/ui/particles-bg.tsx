@@ -213,7 +213,7 @@ export default function ParticlesBg({ className }: ParticlesBgProps) {
       aria-hidden
       className={
         className ??
-        "particles-mesh pointer-events-none fixed inset-0 z-0 h-[100dvh] w-screen bg-transparent"
+        "particles-mesh pointer-events-none fixed inset-0 z-[1] h-[100dvh] w-screen bg-transparent"
       }
     />
   );

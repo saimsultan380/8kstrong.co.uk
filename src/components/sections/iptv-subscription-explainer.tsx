@@ -76,17 +76,29 @@ export function IptvSubscriptionExplainer() {
         <FadeIn delay={0.18}>
           <div
             className="rounded-2xl border p-6 sm:p-8 md:p-10"
-            style={{ borderColor: "var(--feature-card-border)", backgroundColor: "transparent" }}
+            style={{
+              borderColor: "var(--feature-card-border)",
+              backgroundColor: "var(--feature-card-bg)",
+              boxShadow: "var(--feature-card-shadow)",
+            }}
           >
-            <div className="grid gap-4 border-b pb-6 sm:grid-cols-3" style={{ borderColor: "var(--feature-card-border)" }}>
+            <div
+              className="grid gap-4 border-b pb-6 sm:grid-cols-3"
+              style={{ borderColor: "var(--hero-divider)" }}
+            >
               {[
                 { value: "40K+", label: "Live channels" },
                 { value: "8K", label: "UHD options" },
                 { value: "1", label: "Screen as standard" },
               ].map(({ value, label }) => (
                 <div key={label}>
-                  <p className="text-2xl font-black text-gradient-brand">{value}</p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--hero-muted)" }}>
+                  <p className="text-2xl font-black tracking-tight text-gradient-brand sm:text-3xl">
+                    {value}
+                  </p>
+                  <p
+                    className="mt-1 text-xs font-medium"
+                    style={{ color: "var(--hero-heading)" }}
+                  >
                     {label}
                   </p>
                 </div>
@@ -95,7 +107,7 @@ export function IptvSubscriptionExplainer() {
             <div className="mt-6 space-y-5">
               <p
                 className="text-sm leading-[1.8] sm:text-[15px] md:text-base"
-                style={{ color: "var(--hero-muted)" }}
+                style={{ color: "var(--feature-body)" }}
               >
                 A standard account allows one active stream at a time. Additional accounts are
                 available when several devices need to stream simultaneously. You can check
@@ -106,8 +118,7 @@ export function IptvSubscriptionExplainer() {
               href={freeTrialWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex text-sm font-bold underline transition-colors hover:opacity-85"
-              style={{ color: "var(--hero-accent)" }}
+              className="mt-8 inline-flex text-sm font-bold underline transition-opacity hover:opacity-85 text-gradient-brand"
             >
               Start free trial →
             </a>

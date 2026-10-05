@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
+import { useCallback, useState } from "react";
 import {
   createScrollRevealVariants,
   getMotionComponent,
@@ -39,6 +40,11 @@ export function FadeIn({
   const reduceMotion = useReducedMotion();
   const Tag = as;
   const variants = createScrollRevealVariants(variant);
+  const [settled, setSettled] = useState(false);
+
+  const handleComplete = useCallback(() => {
+    setSettled(true);
+  }, []);
 
   if (reduceMotion) {
     return (
@@ -52,13 +58,14 @@ export function FadeIn({
 
   return (
     <MotionTag
-      className={`telvis-motion-reveal${className ? ` ${className}` : ""}`}
+      className={`telvis-motion-reveal${settled ? " motion-settled" : ""}${className ? ` ${className}` : ""}`}
       style={style}
       custom={delay}
       initial="hidden"
       whileInView="visible"
       viewport={motionViewport}
       variants={variants}
+      onAnimationComplete={handleComplete}
     >
       {children}
     </MotionTag>

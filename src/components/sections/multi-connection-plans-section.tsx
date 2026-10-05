@@ -95,10 +95,11 @@ function PricingCard({
       <div
         className="relative flex h-full flex-col rounded-xl border px-6 py-7 transition-all duration-300 md:px-7 md:py-8"
         style={{
-          backgroundColor: "transparent",
-          borderColor: plan.bestValue
-            ? "rgba(212, 168, 75, 0.55)"
-            : "var(--feature-card-border)",
+          backgroundColor: "var(--feature-card-bg)",
+          borderColor: "var(--feature-card-border)",
+          boxShadow: plan.bestValue
+            ? "var(--feature-card-shadow), var(--glass-accent-ring)"
+            : "var(--feature-card-shadow)",
         }}
       >
         {plan.bestValue && (
@@ -115,10 +116,7 @@ function PricingCard({
           </div>
         )}
 
-        <p
-          className="text-sm font-bold uppercase tracking-[0.14em]"
-          style={{ color: "var(--hero-accent)" }}
-        >
+        <p className="text-sm font-bold uppercase tracking-[0.14em] text-gradient-brand">
           {plan.label}
         </p>
 
@@ -240,8 +238,12 @@ export function MultiConnectionPlansSection() {
                 style={{
                   borderColor: active ? "transparent" : "var(--feature-card-border)",
                   color: active ? "var(--hero-cta-primary-fg)" : "var(--hero-muted)",
-                  background: active ? "var(--hero-cta-primary-bg)" : "transparent",
-                  boxShadow: active ? "var(--hero-cta-primary-shadow)" : "none",
+                  background: active
+                    ? "var(--hero-cta-primary-bg)"
+                    : "var(--feature-card-bg)",
+                  boxShadow: active
+                    ? "var(--hero-cta-primary-shadow)"
+                    : "var(--feature-card-shadow)",
                 }}
               >
                 {count} {count === 1 ? "Account" : "Accounts"}

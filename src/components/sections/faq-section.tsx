@@ -103,12 +103,12 @@ function AccordionItem({
   return (
     <ScrollReveal direction="up" delay={delay} once>
       <div
-        className="overflow-hidden rounded-2xl border transition-all duration-200"
+        className="glass-no-hover overflow-hidden rounded-2xl border transition-all duration-200"
         style={{
-          backgroundColor: "transparent",
-          borderColor: isOpen
-            ? "var(--hero-accent)"
-            : "var(--feature-card-border)",
+          backgroundColor: "var(--feature-card-bg)",
+          boxShadow: isOpen
+            ? "var(--glass-shadow), var(--glass-accent-ring)"
+            : "var(--feature-card-shadow)",
         }}
       >
         <button

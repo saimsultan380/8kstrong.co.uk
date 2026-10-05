@@ -32,12 +32,7 @@ export function Header() {
       <header className="pointer-events-none fixed left-0 right-0 top-0 z-[80] px-4 pt-5 sm:px-6 lg:px-8">
         <nav
           aria-label="Main navigation"
-          className="pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-4 rounded-2xl border px-4 py-2.5 backdrop-blur-xl sm:px-5 sm:py-3 lg:max-w-6xl"
-          style={{
-            borderColor: "var(--hero-nav-border)",
-            backgroundColor: "var(--hero-nav-bg)",
-            boxShadow: "var(--hero-nav-shadow)",
-          }}
+          className="glass-nav pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-2.5 sm:px-5 sm:py-3 lg:max-w-6xl"
         >
           {/* Logo */}
           <Link
@@ -126,10 +121,10 @@ export function Header() {
 
             <motion.nav
               aria-label="Mobile navigation"
-              className="fixed left-0 right-0 top-0 z-[75] border-b px-4 pb-8 pt-[5.5rem] shadow-2xl sm:px-6 md:hidden"
+              className="glass-nav fixed left-0 right-0 top-0 z-[75] rounded-none border-b-0 px-4 pb-8 pt-[5.5rem] sm:px-6 md:hidden"
               style={{
-                borderColor: "var(--hero-nav-border)",
-                backgroundColor: "var(--hero-nav-bg)",
+                borderRadius: 0,
+                boxShadow: "var(--hero-nav-shadow), 0 12px 40px rgba(0, 0, 0, 0.25)",
               }}
               initial={{ y: "-100%" }}
               animate={{ y: 0 }}

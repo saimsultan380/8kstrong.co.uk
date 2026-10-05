@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
+import { useCallback, useState } from "react";
 import {
   cardRevealVariants,
   createScrollRevealVariants,
@@ -46,6 +47,11 @@ export function ScrollReveal({
   const variants = useCardPreset
     ? cardRevealVariants
     : createScrollRevealVariants(variant ?? "text", y);
+  const [settled, setSettled] = useState(false);
+
+  const handleComplete = useCallback(() => {
+    setSettled(true);
+  }, []);
 
   if (reduceMotion) {
     return (
@@ -59,13 +65,14 @@ export function ScrollReveal({
 
   return (
     <MotionTag
-      className={`telvis-motion-reveal${className ? ` ${className}` : ""}`}
+      className={`telvis-motion-reveal${settled ? " motion-settled" : ""}${className ? ` ${className}` : ""}`}
       style={style}
       custom={delay}
       initial="hidden"
       whileInView="visible"
       viewport={motionViewport}
       variants={variants}
+      onAnimationComplete={handleComplete}
     >
       {children}
     </MotionTag>

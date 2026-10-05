@@ -123,8 +123,9 @@ export function FirestickCompatibilitySection() {
                 <div
                   className="flex h-full flex-col rounded-2xl border p-5 transition-colors duration-300 hover:border-[var(--hero-accent)] md:p-6"
                   style={{
-                    backgroundColor: "transparent",
+                    backgroundColor: "var(--feature-card-bg)",
                     borderColor: "var(--feature-card-border)",
+                    boxShadow: "var(--feature-card-shadow)",
                   }}
                 >
                   <Icon

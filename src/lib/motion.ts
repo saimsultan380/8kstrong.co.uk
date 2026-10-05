@@ -59,6 +59,11 @@ export function createScrollRevealVariants(
         delay,
         ease: motionEase,
       },
+      // Clear transform/filter so child glass backdrop-filter can sample the page bg
+      transitionEnd: {
+        y: 0,
+        filter: "none",
+      },
     }),
   };
 }
@@ -77,6 +82,10 @@ export const cardRevealVariants = {
       duration: cardMotionDuration,
       delay,
       ease: motionEase,
+    },
+    transitionEnd: {
+      y: 0,
+      filter: "none",
     },
   }),
 };

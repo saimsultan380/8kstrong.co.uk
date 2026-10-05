@@ -2,6 +2,7 @@
 
 import { useReducedMotion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
+import { useCallback, useState } from "react";
 import {
   cardRevealVariants,
   getMotionComponent,
@@ -29,8 +30,13 @@ export function CardReveal({
   id,
 }: CardRevealProps) {
   const reduceMotion = useReducedMotion();
+  const [settled, setSettled] = useState(false);
+  const handleComplete = useCallback(() => {
+    setSettled(true);
+  }, []);
+
   const tagProps = {
-    className: `telvis-motion-reveal${className ? ` ${className}` : ""}`,
+    className: `telvis-motion-reveal${settled ? " motion-settled" : ""}${className ? ` ${className}` : ""}`,
     id,
     style,
   };
@@ -50,6 +56,7 @@ export function CardReveal({
       whileInView="visible"
       viewport={motionViewport}
       variants={cardRevealVariants}
+      onAnimationComplete={handleComplete}
     >
       {children}
     </MotionTag>

@@ -98,20 +98,17 @@ export function HomepageKeyFeaturesSection() {
           </FadeIn>
         </div>
 
-        <div
-          className="grid overflow-hidden rounded-2xl border md:grid-cols-2"
-          style={{ borderColor: "var(--feature-card-border)" }}
-        >
+        <div className="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
           {FEATURES.map((feature, i) => {
             const Icon = feature.icon;
             return (
               <ScrollReveal key={feature.id} direction="up" delay={0.05 * i} once className="h-full">
                 <div
-                  className="flex h-full items-start gap-4 border-b p-6 md:p-8"
+                  className="flex h-full items-start gap-4 rounded-2xl border p-6 md:gap-5 md:p-8"
                   style={{
+                    backgroundColor: "var(--feature-card-bg)",
                     borderColor: "var(--feature-card-border)",
-                    borderRight: i % 2 === 0 ? "1px solid var(--feature-card-border)" : undefined,
-                    backgroundColor: "transparent",
+                    boxShadow: "var(--feature-card-shadow)",
                   }}
                 >
                   <Icon
@@ -143,8 +140,9 @@ export function HomepageKeyFeaturesSection() {
           <div
             className="mt-5 rounded-2xl border p-6 md:p-8"
             style={{
-              backgroundColor: "transparent",
+              backgroundColor: "var(--feature-card-bg)",
               borderColor: "var(--feature-card-border)",
+              boxShadow: "var(--feature-card-shadow)",
             }}
           >
             <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
