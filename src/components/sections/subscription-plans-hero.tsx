@@ -13,10 +13,11 @@ export function SubscriptionPlansHero() {
       <Container className="relative z-10 pt-32 text-center sm:pt-36">
         <HeroReveal delay={0.05}>
           <div
-            className="mb-7 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-sm"
+            className="mb-7 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
             style={{
               borderColor: "var(--hero-pill-border)",
-              backgroundColor: "var(--hero-pill-bg)",
+              backgroundColor: "var(--glass-bg)",
+              boxShadow: "var(--glass-shadow)",
             }}
           >
             <span

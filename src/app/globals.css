@@ -143,18 +143,18 @@
       rgba(0, 0, 0, 0.58) 100%
     );
 
-  /* Shared frosted glass — header + all cards (strong blur like free-trial card) */
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-blur: 40px;
+  /* Shared glass — light black panels (no backdrop blur; avoids scroll pop-in) */
+  --glass-bg: rgba(0, 0, 0, 0.42);
+  --glass-blur: 0px;
   --glass-radius: 20px;
   --glass-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   --glass-shadow-hover:
-    0 16px 48px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    0 16px 48px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
   --glass-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --glass-accent-ring: 0 0 0 1px rgba(212, 168, 75, 0.55);
 
@@ -162,7 +162,7 @@
   --feature-card-bg: var(--glass-bg);
   --feature-card-border: transparent;
   --feature-card-shadow: var(--glass-shadow);
-  --feature-icon-bg: rgba(255, 255, 255, 0.08);
+  --feature-icon-bg: rgba(0, 0, 0, 0.35);
   --feature-icon-border: transparent;
   --feature-heading: #d4a84b;
   --feature-body: rgba(255, 255, 255, 0.86);
@@ -199,8 +199,8 @@
 
   .glass-card {
     background-color: var(--glass-bg);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border-radius: var(--glass-radius);
     border: none;
     box-shadow: var(--glass-shadow);
@@ -222,8 +222,8 @@
 
   .glass-nav {
     background-color: var(--glass-bg);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border-radius: var(--glass-radius);
     border: none;
     box-shadow: var(--glass-shadow);
@@ -231,12 +231,12 @@
 
   .glass-icon {
     background-color: var(--feature-icon-bg);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border: none;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -244,8 +244,8 @@
   /* Panels that use card tokens in inline styles */
   [style*="var(--feature-card-bg)"] {
     background-color: var(--glass-bg) !important;
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     border-radius: var(--glass-radius);
     border: none !important;
     box-shadow: var(--glass-shadow);
@@ -269,15 +269,15 @@
   /* Inline transparent bg must not punch holes through glass panels */
   [style*="feature-card-border"][style*="transparent"] {
     background-color: var(--glass-bg) !important;
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     box-shadow: var(--glass-shadow);
   }
 
   :is(div, a, form, article):is(.rounded-2xl, .rounded-xl).border[style*="feature-card-border"] {
     background-color: var(--glass-bg) !important;
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
-    backdrop-filter: blur(var(--glass-blur)) saturate(140%) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     border-radius: var(--glass-radius);
     border: none !important;
     box-shadow: var(--glass-shadow);
@@ -303,12 +303,12 @@
   :is(div, span)[class*="rounded-full"].border[style*="feature-icon-border"] {
     background-color: var(--feature-icon-bg) !important;
     background: var(--feature-icon-bg) !important;
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
     border: none !important;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -409,16 +409,16 @@ span[style*="hero-cta-primary-bg"] {
   color: var(--hero-cta-primary-fg) !important;
 }
 
-/* Icon wells: frosted glass, keep circular where used */
+/* Icon wells: light black glass, keep circular where used */
 div[style*="feature-icon-bg"] {
   background-color: var(--feature-icon-bg) !important;
   background: var(--feature-icon-bg) !important;
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   border: none !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05) !important;
   border-radius: 9999px !important;
 }
 
@@ -486,7 +486,7 @@ button[style*="hero-cta-primary-bg"]::after {
   }
 }
 
-/* Telvis blur-reveal — no permanent transform (breaks glass backdrop-filter) */
+/* Telvis reveal helpers */
 .telvis-motion-reveal {
   backface-visibility: hidden;
 }
@@ -494,12 +494,6 @@ button[style*="hero-cta-primary-bg"]::after {
 .telvis-motion-reveal.motion-settled {
   transform: none !important;
   filter: none !important;
-}
-
-/* Sections used isolate which makes backdrop-filter ignore the fixed site bg */
-main section.isolate,
-section.isolate {
-  isolation: auto;
 }
 
 .telvis-h1-reveal-line {
