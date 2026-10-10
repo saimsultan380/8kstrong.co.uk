@@ -2,26 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Tv, MonitorPlay, Headphones } from "lucide-react";
+import { Tv, Film, Headphones } from "lucide-react";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/layout/container";
 import { HeroReveal } from "@/components/animation/hero-reveal";
 import { HeroTitleReveal } from "@/components/animation/hero-title-reveal";
 import { motion } from "framer-motion";
-import {
-  whatsappMessages,
-  whatsappUrlWithText,
-} from "@/lib/site";
 
 const HERO_FEATURES = [
   { label: "40,000+ live channels", icon: Tv },
-  { label: "HD, 4K and 8K UHD options", icon: MonitorPlay },
-  { label: "24/7 support", icon: Headphones },
+  { label: "140,000+ on-demand titles", icon: Film },
+  { label: "24/7 customer support", icon: Headphones },
 ];
-
-const freeTrialWhatsapp = whatsappUrlWithText(
-  whatsappMessages.startFreeTrial,
-);
 
 export function HeroSection() {
   return (
@@ -40,7 +32,7 @@ export function HeroSection() {
             />
             <Image
               src="/strong-8k.PNG?v=2"
-              alt="Strong 8K IPTV logo"
+              alt="Strong 8k logo"
               width={1024}
               height={1024}
               loading="eager"
@@ -52,10 +44,10 @@ export function HeroSection() {
 
         <div className="order-2 text-left lg:order-1">
           <HeroTitleReveal
-            className="max-w-[720px] text-left text-[28px] font-bold leading-[1.12] tracking-tight text-gradient-brand sm:text-4xl md:text-[44px] lg:text-[48px]"
+            className="max-w-[720px] text-left text-[26px] font-bold leading-[1.12] tracking-tight text-gradient-brand sm:text-4xl md:text-[40px] lg:text-[44px]"
             lines={[
-              "Strong 8K IPTV – Premium IPTV Subscription",
-              "with 40,000+ Channels & Up to 8K UHD",
+              "Strong 8k - Premium UHD IPTV Subscription ",
+              "For UK with 40k+ Channels",
             ]}
           />
 
@@ -65,10 +57,25 @@ export function HeroSection() {
               style={{ color: "var(--hero-muted)" }}
             >
               <p>
-                Strong 8K IPTV brings live television, films and series together through a compatible player on your TV, phone or computer. Explore the available catalogue, check your device and try the service before choosing a subscription.
+                40,000+ live channels and 140,000+ on-demand titles, with content
+                requests and 24/7 customer support.
               </p>
               <p>
-                Built for viewers across the UK, your Strong 8K subscription includes setup assistance and technical support throughout your active subscription. Picture quality depends on the available source stream, your device, player and internet connection, with resolutions up to 8K UHD on supported content.
+                Watch live television, find a film for the evening or return to a
+                favourite series with Strong 8k. Our IPTV service brings UK-focused
+                viewing and international entertainment together through a compatible
+                player on your own device.
+              </p>
+              <p>
+                Choose a Strong 8k IPTV subscription for one, three, six or twelve
+                months, with connection options for households that need more than
+                one screen playing at once. Available quality includes HD, FHD and
+                UHD, depending on the source and your setup.
+              </p>
+              <p>
+                Before ordering, ask us about your device and the content you want.
+                You can contact support for a free trial and check the service on
+                the connection you normally use.
               </p>
             </div>
           </HeroReveal>
@@ -79,25 +86,19 @@ export function HeroSection() {
                 <Link
                   href={routes.subscriptionPlans}
                   className="flex min-h-11 items-center justify-center whitespace-nowrap rounded-xl bg-gradient-brand px-2.5 py-3 text-[12px] font-bold text-black transition-all duration-200 hover:brightness-110 sm:min-w-52 sm:px-7 sm:text-[14px]"
-                  style={{
-                    boxShadow: "var(--hero-cta-primary-shadow)",
-                  }}
+                  style={{ boxShadow: "var(--hero-cta-primary-shadow)" }}
                 >
-                  Subscribe Now
+                  View Subscription Plans
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="min-w-0 flex-[1.35] sm:flex-initial">
-                <a
-                  href={freeTrialWhatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="min-w-0 flex-[1.15] sm:flex-initial">
+                <Link
+                  href={`${routes.contactUs}?enquiry=free-trial`}
                   className="flex min-h-11 items-center justify-center whitespace-nowrap rounded-xl bg-gradient-brand px-2.5 py-3 text-[12px] font-bold text-black transition-all duration-200 hover:brightness-110 sm:min-w-52 sm:px-7 sm:text-[14px]"
-                  style={{
-                    boxShadow: "var(--hero-cta-primary-shadow)",
-                  }}
+                  style={{ boxShadow: "var(--hero-cta-primary-shadow)" }}
                 >
-                  Start 24-Hour Free Trial
-                </a>
+                  Request a Free Trial
+                </Link>
               </motion.div>
             </div>
           </HeroReveal>

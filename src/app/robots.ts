@@ -14,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${origin}/sitemap.xml`,
-    host: "strong-8k.co.uk",
+    host: new URL(origin).host,
   };
 }

@@ -6,13 +6,7 @@ import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { motion } from "framer-motion";
 import { routes } from "@/lib/routes";
-
-const ROWS = [
-  { duration: "1 month", total: "£9.99" },
-  { duration: "3 months", total: "£17.99" },
-  { duration: "6 months", total: "£25.99" },
-  { duration: "12 months", total: "£42.99" },
-];
+import { HOME_PLAN_FEATURES, PLAN_DURATIONS, PLAN_PRICES, planEnquiryHref } from "@/lib/plans";
 
 export function PricingSection() {
   return (
@@ -28,8 +22,7 @@ export function PricingSection() {
               className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Strong 8K{" "}
-              <span style={{ color: "var(--hero-accent)" }}>Subscription Options</span>
+              Choose Your Strong 8k IPTV Subscription and Duration
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -37,66 +30,96 @@ export function PricingSection() {
               className="text-sm leading-[1.75] sm:text-[15px] md:text-right"
               style={{ color: "var(--hero-muted)" }}
             >
-              Choose a subscription duration that suits your viewing needs. The prices
-              below cover one account with one active stream at a time. Visit our Pricing
-              page for additional account options and the full purchase terms.
+              Choose the subscription length that suits your viewing. Every plan
+              includes access to the same available live channel and on-demand
+              catalogue. The prices below cover the full selected term for one
+              connection, allowing one active stream at a time.
             </p>
           </FadeIn>
         </div>
 
-        <ScrollReveal direction="up" delay={0.1} once>
-          <div
-            className="mx-auto max-w-3xl overflow-hidden rounded-2xl border"
-            style={{ borderColor: "var(--feature-card-border)" }}
-          >
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[320px] text-left text-sm sm:text-[15px]">
-                <thead>
-                  <tr style={{ borderBottom: "1px solid var(--feature-card-border)" }}>
-                    {["Subscription duration", "One-account total"].map((header) => (
-                      <th
-                        key={header}
-                        className="px-5 py-4 font-bold md:px-6"
-                        style={{ color: "var(--hero-heading)" }}
-                      >
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {ROWS.map((row) => (
-                    <tr
-                      key={row.duration}
-                      style={{ borderBottom: "1px solid var(--feature-card-border)" }}
-                    >
-                      <td
-                        className="px-5 py-4 font-semibold md:px-6"
-                        style={{ color: "var(--hero-heading)" }}
-                      >
-                        {row.duration}
-                      </td>
-                      <td className="px-5 py-4 md:px-6" style={{ color: "var(--hero-muted)" }}>
-                        {row.total}
-                      </td>
-                    </tr>
+        <div className="grid w-full items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {PLAN_DURATIONS.map((plan, i) => (
+            <ScrollReveal key={plan.months} direction="up" delay={0.04 * i} once className="h-full">
+              <article
+                className="flex h-full flex-col rounded-xl border px-6 py-7 md:px-6 md:py-8"
+                style={{
+                  backgroundColor: "var(--feature-card-bg)",
+                  borderColor: "var(--feature-card-border)",
+                  boxShadow: "var(--feature-card-shadow)",
+                }}
+              >
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-gradient-brand">
+                  {plan.label}
+                </p>
+                <p
+                  className="mt-4 text-4xl font-bold tracking-tight md:text-[40px]"
+                  style={{ color: "var(--hero-heading)" }}
+                >
+                  {PLAN_PRICES[1][plan.months]}
+                </p>
+                <p className="mt-3 text-[13px] leading-[1.6]" style={{ color: "var(--hero-muted)" }}>
+                  {plan.summary}
+                </p>
+                <p className="mt-5 text-[13px] font-semibold" style={{ color: "var(--hero-heading)" }}>
+                  Included catalogue and features:
+                </p>
+                <ul className="mb-8 mt-3 flex flex-1 flex-col gap-2.5">
+                  {HOME_PLAN_FEATURES.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3 text-[13px] leading-[1.55]">
+                      <span
+                        className="mt-[9px] h-px w-3 shrink-0"
+                        style={{ background: "var(--grad-brand)" }}
+                        aria-hidden
+                      />
+                      <span style={{ color: "rgba(255, 255, 255, 0.82)" }}>{feature}</span>
+                    </li>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </ScrollReveal>
+                </ul>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Link
+                    href={planEnquiryHref(plan.months, 1)}
+                    className="flex w-full items-center justify-center rounded-xl px-4 py-3.5 text-center text-[13px] font-bold text-black transition-all duration-200 hover:brightness-110"
+                    style={{
+                      background: "var(--grad-brand)",
+                      boxShadow: "var(--hero-cta-primary-shadow)",
+                    }}
+                  >
+                    {plan.cta}
+                  </Link>
+                </motion.div>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
 
-        <FadeIn delay={0.25} className="mt-10 text-center">
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
+        <FadeIn delay={0.2} className="mx-auto mt-10 max-w-3xl text-center">
+          <p className="text-sm leading-[1.75] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+            Need more than one screen playing at once? Visit our Pricing page for
+            two, three and four-connection options. Ask us about your important
+            channels, titles and device before ordering. Individual content
+            availability can change, and some third-party players have a separate
+            licence charge.
+          </p>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={routes.subscriptionPlans}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-brand px-6 py-3.5 text-[13px] font-bold text-black transition-all duration-200 hover:brightness-110 sm:text-[15px]"
               style={{ boxShadow: "var(--hero-cta-primary-shadow)" }}
             >
-              Compare Prices and Account Options
+              View All Subscription Plans
             </Link>
-          </motion.div>
+            <Link
+              href={`${routes.contactUs}?enquiry=free-trial`}
+              className="inline-flex items-center justify-center rounded-xl border px-6 py-3.5 text-[13px] font-bold transition-all duration-200 hover:border-[var(--hero-accent)] sm:text-[15px]"
+              style={{
+                borderColor: "var(--hero-btn-border)",
+                color: "var(--hero-heading)",
+              }}
+            >
+              Ask About a Free Trial
+            </Link>
+          </div>
         </FadeIn>
       </Container>
     </section>

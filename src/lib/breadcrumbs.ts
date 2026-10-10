@@ -1,5 +1,5 @@
 import { routes } from "@/lib/routes";
-import { canonicalUrl, siteConfig } from "@/lib/site";
+import { canonicalUrl, pageDescriptions, siteConfig } from "@/lib/site";
 
 export type BreadcrumbItem = {
   name: string;
@@ -26,6 +26,10 @@ export const pageBreadcrumbs = {
     { name: "Home", path: routes.home },
     { name: "Contact Us", path: routes.contactUs },
   ] satisfies BreadcrumbItem[],
+  blogs: [
+    { name: "Home", path: routes.home },
+    { name: "Blogs", path: routes.blogs },
+  ] satisfies BreadcrumbItem[],
 } as const;
 
 /** schema.org/BreadcrumbList JSON-LD. Only emit when there are ≥2 items (Google requirement). */
@@ -50,9 +54,9 @@ export function siteJsonLd() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: siteConfig.name,
-      alternateName: [siteConfig.shortName, "Strong 8K IPTV UK"],
+      alternateName: ["Strong8k", "Strong 8k IPTV"],
       url: canonicalUrl(routes.home),
-      description: siteConfig.description,
+      description: pageDescriptions.home,
       inLanguage: "en-GB",
     },
     {

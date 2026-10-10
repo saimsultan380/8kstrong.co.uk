@@ -3,73 +3,88 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.strong-8k.co.uk" }],
-      "destination": "https://strong-8k.co.uk/:path*",
+      "has": [{ "type": "host", "value": "www.8k-strong.co.uk" }],
+      "destination": "https://8k-strong.co.uk/:path*",
       "permanent": true
     },
     {
-      "source": "/",
-      "destination": "/strong-8k-iptv-uk/",
+      "source": "/strong-8k-iptv-uk",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/strong-8k-iptv-uk/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/iptv-subscription-plans",
+      "destination": "/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/iptv-subscription-plans/",
+      "destination": "/pricing/",
       "permanent": true
     },
     {
       "source": "/subscription-plans",
-      "destination": "/iptv-subscription-plans/",
+      "destination": "/pricing/",
       "permanent": true
     },
     {
       "source": "/subscription-plans/",
-      "destination": "/iptv-subscription-plans/",
+      "destination": "/pricing/",
       "permanent": true
     },
     {
-      "source": "/installation-guide",
-      "destination": "/iptv-installation-guide/",
+      "source": "/iptv-installation-guide",
+      "destination": "/installation-guide/",
       "permanent": true
     },
     {
-      "source": "/installation-guide/",
-      "destination": "/iptv-installation-guide/",
+      "source": "/iptv-installation-guide/",
+      "destination": "/installation-guide/",
       "permanent": true
     },
     {
-      "source": "/reseller-panel",
-      "destination": "/iptv-reseller-panel/",
+      "source": "/iptv-reseller-panel",
+      "destination": "/reseller-panel/",
       "permanent": true
     },
     {
-      "source": "/reseller-panel/",
-      "destination": "/iptv-reseller-panel/",
+      "source": "/iptv-reseller-panel/",
+      "destination": "/reseller-panel/",
       "permanent": true
     },
     {
-      "source": "/contact-us",
-      "destination": "/iptv-contact-us/",
+      "source": "/iptv-contact-us",
+      "destination": "/contact-us/",
       "permanent": true
     },
     {
-      "source": "/contact-us/",
-      "destination": "/iptv-contact-us/",
+      "source": "/iptv-contact-us/",
+      "destination": "/contact-us/",
       "permanent": true
     },
     {
       "source": "/free-trial",
-      "destination": "/iptv-contact-us/",
+      "destination": "/contact-us/",
       "permanent": true
     },
     {
       "source": "/free-trial/",
-      "destination": "/iptv-contact-us/",
+      "destination": "/contact-us/",
       "permanent": true
     },
     {
       "source": "/contact",
-      "destination": "/iptv-contact-us/",
+      "destination": "/contact-us/",
       "permanent": true
     },
     {
       "source": "/contact/",
-      "destination": "/iptv-contact-us/",
+      "destination": "/contact-us/",
       "permanent": true
     }
   ]

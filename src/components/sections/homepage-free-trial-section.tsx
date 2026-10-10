@@ -1,22 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
 import { motion } from "framer-motion";
-import {
-  whatsappMessages,
-  whatsappUrlWithText,
-} from "@/lib/site";
+import { routes } from "@/lib/routes";
 
-const freeTrialWhatsapp = whatsappUrlWithText(
-  whatsappMessages.startFreeTrial,
-);
-
-const TRIAL_INCLUDES = [
-  "Access the 40,000+ channel catalogue",
-  "Access the 120,000+ on-demand selection",
-  "No card or payment is required",
-  "Access expires automatically without a charge",
+const TRIAL_CHECKS = [
+  "Usual live channels",
+  "An on-demand film and a series",
+  "Available audio and subtitles",
+  "Player controls and picture quality",
 ];
 
 export function HomepageFreeTrialSection() {
@@ -44,94 +38,54 @@ export function HomepageFreeTrialSection() {
                   className="text-[11px] font-bold uppercase tracking-[0.28em]"
                   style={{ color: "var(--hero-muted)" }}
                 >
-                  Full access for
+                  Before you subscribe
                 </span>
-                <div className="mt-4 flex items-end justify-center">
-                  <span className="text-[96px] font-black leading-[.8] text-gradient-brand sm:text-[120px]">
-                    24
-                  </span>
-                  <span
-                    className="mb-2 ml-2 text-xl font-black uppercase"
-                    style={{ color: "var(--hero-accent)" }}
-                  >
-                    hours
-                  </span>
-                </div>
+                <p className="mt-4 text-5xl font-black leading-none text-gradient-brand sm:text-6xl">
+                  Free
+                </p>
+                <p className="mt-3 text-xl font-black uppercase" style={{ color: "var(--hero-accent)" }}>
+                  trial
+                </p>
                 <p className="mt-6 text-sm font-semibold" style={{ color: "var(--hero-heading)" }}>
-                  £0 · No card needed
+                  Duration confirmed by support
                 </p>
               </FadeIn>
             </div>
 
             <div className="p-7 sm:p-10 lg:p-12">
-              <FadeIn delay={0.05}>
-                <span
-                  className="text-[11px] font-bold uppercase tracking-[0.22em]"
-                  style={{ color: "var(--hero-accent)" }}
-                >
-                  Free Trial
-                </span>
-              </FadeIn>
-
               <FadeIn delay={0.1}>
                 <h2
                   className="mt-4 max-w-xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
                   style={{ color: "var(--hero-heading)" }}
                 >
-                  Try Strong 8K IPTV Free for{" "}
-                  <span style={{ color: "var(--hero-accent)" }}>24 Hours</span>
+                  Request a Strong 8k Free Trial Before Subscribing
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <p
-                  className="mt-6 max-w-xl text-sm leading-[1.75] sm:text-[15px]"
-                  style={{ color: "var(--hero-muted)" }}
-                >
-                  Use the Strong 8K trial to test picture quality, navigation and content
-                  categories on the connection you will actually use. Access the 40,000+ channel
-                  catalogue and 120,000+ on-demand selection during your 24-hour trial. No card or
-                  payment is required, and access expires automatically without a charge. Choose an
-                  IPTV subscription only if you decide to continue.
-                </p>
+                <div className="mt-6 max-w-xl space-y-4 text-sm leading-[1.75] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+                  <p>Contact us for a free trial. Support will confirm its availability, duration and start time.</p>
+                  <p>Test your usual live channels, an on-demand film and a series. Check the available audio and subtitles, player controls and picture quality.</p>
+                  <p>If you rely on EPG or catch-up, inspect those features on the channels that matter to you.</p>
+                  <p>Ask questions before selecting a paid duration. A trial should help you understand the actual viewing experience and account requirements.</p>
+                </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p
-                  className="mt-7 text-sm font-semibold"
-                  style={{ color: "var(--hero-heading)" }}
-                >
-                  Your 24-hour trial includes:
-                </p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {TRIAL_INCLUDES.map((item) => (
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {TRIAL_CHECKS.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm sm:text-[15px]">
-                      <span
-                        className="mt-[9px] h-px w-3 shrink-0"
-                        style={{ background: "var(--grad-brand)" }}
-                        aria-hidden
-                      />
+                      <span className="mt-[9px] h-px w-3 shrink-0" style={{ background: "var(--grad-brand)" }} aria-hidden />
                       <span style={{ color: "var(--hero-muted)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
               </FadeIn>
 
-              <FadeIn delay={0.25}>
-                <p
-                  className="mt-6 max-w-xl text-sm leading-[1.75] sm:text-[15px]"
-                  style={{ color: "var(--hero-muted)" }}
-                >
-                  Choose an IPTV subscription only if you decide to continue.
-                </p>
-              </FadeIn>
-
               <FadeIn delay={0.3} className="mt-8">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
-                  <a
-                    href={freeTrialWhatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={`${routes.contactUs}?enquiry=free-trial`}
                     className="inline-flex items-center gap-2.5 rounded-xl px-7 py-4 text-[14px] font-bold transition-all duration-200 hover:brightness-110 sm:text-[15px]"
                     style={{
                       background: "var(--hero-cta-primary-bg)",
@@ -139,8 +93,8 @@ export function HomepageFreeTrialSection() {
                       color: "var(--hero-cta-primary-fg)",
                     }}
                   >
-                    Start free trial →
-                  </a>
+                    Request a Free Trial
+                  </Link>
                 </motion.div>
               </FadeIn>
             </div>

@@ -7,33 +7,43 @@ import { ScrollReveal } from "@/components/animation/scroll-reveal";
 const ISSUES = [
   {
     id: "login",
-    title: "Invalid credentials or an expired account",
-    body: "Check the server URL, username and password, or the playlist URL, for spaces and typing mistakes. Confirm the trial or subscription is still active and that you selected the login method in your welcome message.",
+    title: "The account details are rejected",
+    body: "Check the server URL, username and password, or complete M3U link. Look for missing characters or accidental spaces and confirm the account is active.",
   },
   {
     id: "catalogue",
-    title: "The entire catalogue fails to load",
-    body: "Restart the player and the device, then check the internet connection. If the list still does not appear, contact support with the app name and any error message.",
+    title: "The catalogue does not load",
+    body: "Restart the player and check the internet connection. Send support the exact message shown.",
   },
   {
     id: "channels",
-    title: "Individual channels or categories are unavailable",
-    body: "One missing channel or category, while the rest of the catalogue loads, is a content or source issue. Tell support which category failed and when it started.",
+    title: "One channel or title fails",
+    body: "Try another item. Report the affected channel or title and when the problem occurred.",
   },
   {
-    id: "buffering",
-    title: "Buffering or an unstable connection",
-    body: "Test another stream, reboot the player and router, and try Ethernet or stronger Wi-Fi. Note the time, app and connection type when you contact support.",
+    id: "connections",
+    title: "Playback stops when another device starts",
+    body: "Check the simultaneous connection allowance and close streams you are not using.",
+  },
+  {
+    id: "epg",
+    title: "Programme information is missing",
+    body: "EPG coverage is limited. Refresh the guide where supported and check the player’s time zone.",
+  },
+  {
+    id: "catchup",
+    title: "Catch-up is unavailable",
+    body: "Catch-up is limited to supported channels and programmes. Ask support about the specific content.",
   },
   {
     id: "licence",
-    title: "Player activation or licence problems",
-    body: "Some third-party players need their own licence or a device ID before streams play. Use the identifier the player shows and confirm any separate app charge with the publisher.",
+    title: "The player requests a licence payment",
+    body: "Check the app licence separately from your Strong 8k subscription.",
   },
   {
-    id: "quality",
-    title: "Quality below expectations",
-    body: "Resolution depends on the source stream, the player, the display and the connection. A higher setting cannot turn a lower-resolution source into 8K.",
+    id: "older-app",
+    title: "You have an older app installed",
+    body: "The current code is 4330396. The previous version used 439873. Ask support about updating your existing installation.",
   },
 ];
 
@@ -56,7 +66,7 @@ export function InstallationTroubleshooting() {
 
         <FadeIn delay={0.1}>
           <h2 className="mt-4 max-w-4xl text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-[42px]">
-            Troubleshooting Login and Playback
+            Fix Common Strong 8k Login and Playback Problems
           </h2>
         </FadeIn>
 

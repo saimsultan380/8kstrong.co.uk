@@ -2,44 +2,54 @@ import { FaqAccordionSection, type FaqItem } from "@/components/sections/faq-sec
 
 const RESELLER_FAQS: FaqItem[] = [
   {
-    id: "start",
-    q: "How many credits do I need to start?",
-    a: "The Starter package contains 120 credits. Growth is 240 credits and Pro is 360 credits. Ask for a demonstration before you choose.",
+    id: "minimum",
+    q: "What is the minimum purchase?",
+    a: "120 credits are required to create the dashboard.",
   },
   {
-    id: "deducted",
-    q: "How are credits deducted?",
-    a: "One credit covers one month of one standard customer account. A 3-month line uses 3 credits, a 6-month line uses 6, and a 12-month line uses 12. Confirm with support if the customer needs extra simultaneous accounts.",
+    id: "cost",
+    q: "How much do credits cost?",
+    a: "Contact us for the current price and available quantities.",
+  },
+  {
+    id: "activation",
+    q: "Which details are needed for activation?",
+    a: "Your chosen email address and username. Access is activated after payment confirmation.",
+  },
+  {
+    id: "branding",
+    q: "Can I use my own branding?",
+    a: "Yes. Ask us to confirm the personal domain, URL and available branding elements.",
+  },
+  {
+    id: "vps",
+    q: "Can I add a VPS?",
+    a: "A compatible VPS arrangement can be configured according to the agreed requirements. Confirm the setup and costs with support.",
+  },
+  {
+    id: "vpn",
+    q: "Can customers use a VPN?",
+    a: "Ask us for the supported account and specific compatible URL. A VPN subscription is separate unless expressly included.",
+  },
+  {
+    id: "capacity",
+    q: "How many subscriptions does 120 credits create?",
+    a: "That depends on the terms, connections and confirmed credit deductions.",
   },
   {
     id: "expire",
     q: "Do unused credits expire?",
-    a: "No. Unused credits remain on your balance until you use them.",
+    a: "The applicable usage and expiry rules are confirmed before purchase.",
   },
   {
     id: "trials",
-    q: "Can I create trials?",
-    a: "Trial access is limited. Current allowances start at up to ten trial accounts per day and can change with your account level. Trials are not unlimited.",
-  },
-  {
-    id: "branding",
-    q: "Which branding options are available?",
-    a: "White-label branding and sub-reseller access may need approval and can have an extra cost. Contact support before you offer either option.",
-  },
-  {
-    id: "support",
-    q: "Who supports my customers?",
-    a: "You support the customers you sell to. Strong 8K supports service and panel issues. Escalate those problems to us with the account details.",
-  },
-  {
-    id: "renew",
-    q: "How do I renew customer accounts?",
-    a: "Renew a line from the dashboard before it expires. The renewal uses credits for the new duration on the same one-account rule.",
+    q: "Can I create free trials?",
+    a: "Confirm the dashboard’s current trial functions and allowances during onboarding.",
   },
   {
     id: "refund",
-    q: "What are the reseller purchase and refund terms?",
-    a: "Wholesale credit purchases have their own terms. The consumer 7-day money-back guarantee on viewing subscriptions does not automatically apply to reseller credit packs. Ask support for the terms that apply to your package before you pay.",
+    q: "Do viewing-subscription refund terms cover reseller credits?",
+    a: "Wholesale purchases have separate terms. Read the terms supplied with your credit quote before paying.",
   },
 ];
 
@@ -47,15 +57,10 @@ export function ResellerFaqSection() {
   return (
     <FaqAccordionSection
       faqs={RESELLER_FAQS}
-      defaultOpenId="start"
+      defaultOpenId="minimum"
       eyebrow="FAQ"
-      description="Credits, trials, branding, renewals and wholesale terms."
-      title={
-        <>
-          Reseller{" "}
-          <span style={{ color: "var(--hero-accent)" }}>Questions</span>
-        </>
-      }
+      description="Credits, branding, VPS, VPN and wholesale terms."
+      title={<>Answers to Common Strong 8k Reseller Panel Questions</>}
     />
   );
 }

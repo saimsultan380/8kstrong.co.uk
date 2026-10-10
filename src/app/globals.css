@@ -519,3 +519,12 @@ button[style*="hero-cta-primary-bg"]::after {
   background-clip: initial;
   -webkit-text-fill-color: currentColor;
 }
+
+/* Action buttons use a 100px corner radius. Cards and form fields stay as designed. */
+a.rounded-xl,
+a.rounded-lg,
+button.rounded-xl,
+button.rounded-lg,
+[data-slot="button"] {
+  border-radius: 100px;
+}

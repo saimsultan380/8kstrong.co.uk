@@ -5,39 +5,12 @@ import { Container } from "@/components/layout/container";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { FadeIn } from "@/components/animation/fade-in";
 import { motion } from "framer-motion";
-import { whatsappUrlWithText } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { PLAN_DURATIONS, PLAN_PRICES, planEnquiryHref } from "@/lib/plans";
+import Link from "next/link";
+import { routes } from "@/lib/routes";
 
-const ACCOUNT_OPTIONS = [1, 2, 3, 4] as const;
-
-const PRICES: Record<number, Record<number, string>> = {
-  1: { 1: "£9.99", 3: "£17.99", 6: "£25.99", 12: "£42.99" },
-  2: { 1: "£17.91", 3: "£34.25", 6: "£50.59", 12: "£83.27" },
-  3: { 1: "£25.51", 3: "£49.59", 6: "£73.67", 12: "£120.11" },
-  4: { 1: "£33.11", 3: "£64.93", 6: "£96.75", 12: "£149.99" },
-};
-
-const SHARED_FEATURES = [
-  "40,000+ live channels (UK & international)",
-  "Full international sports packages",
-  "120,000+ VOD movies & series, updated daily",
-  "30,000+ complete series box sets, within the VOD library",
-  "SD / HD / FHD / 4K / 8K UHD quality where the stream supports it",
-  "Free TV & VOD updates throughout your subscription",
-  "M3U, MAG, Xtream Codes & Enigma supported",
-  "Radio and music channels included",
-  "Works on Smart TV, Firestick, phone, tablet & PC",
-  "Catch-up TV & full EPG guide where supported",
-  "Activation after payment confirmation",
-  "Technical support throughout the active subscription",
-];
-
-const PLANS = [
-  { months: 1, label: "1 month", bestValue: false },
-  { months: 3, label: "3 months", bestValue: false },
-  { months: 6, label: "6 months", bestValue: false },
-  { months: 12, label: "12 months", bestValue: true },
-];
+const CONNECTION_OPTIONS = [1, 2, 3, 4] as const;
 
 function PriceGlowDivider() {
   return (
@@ -70,26 +43,17 @@ function PriceGlowDivider() {
   );
 }
 
-type Plan = (typeof PLANS)[number];
-
 function PricingCard({
   plan,
-  accounts,
+  connections,
   delay = 0,
 }: {
-  plan: Plan;
-  accounts: number;
+  plan: (typeof PLAN_DURATIONS)[number];
+  connections: number;
   delay?: number;
 }) {
-  const price = PRICES[accounts][plan.months];
-  const allowance =
-    accounts === 1
-      ? "1 account · 1 active stream at a time"
-      : `${accounts} accounts · ${accounts} simultaneous streams`;
-  const features = [allowance, ...SHARED_FEATURES];
-  const href = whatsappUrlWithText(
-    `Get this plan: ${plan.label}, ${accounts} account${accounts > 1 ? "s" : ""}, ${price}`,
-  );
+  const price = PLAN_PRICES[connections][plan.months];
+  const href = planEnquiryHref(plan.months, connections);
   return (
     <ScrollReveal direction="up" delay={delay} once className="h-full">
       <div
@@ -97,67 +61,28 @@ function PricingCard({
         style={{
           backgroundColor: "var(--feature-card-bg)",
           borderColor: "var(--feature-card-border)",
-          boxShadow: plan.bestValue
-            ? "var(--feature-card-shadow), var(--glass-accent-ring)"
-            : "var(--feature-card-shadow)",
+          boxShadow: "var(--feature-card-shadow)",
         }}
       >
-        {plan.bestValue && (
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span
-              className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-black"
-              style={{
-                background: "var(--grad-brand)",
-                boxShadow: "0 4px 12px rgba(184, 134, 11, 0.35)",
-              }}
-            >
-              Best Value
-            </span>
-          </div>
-        )}
-
-        <p className="text-sm font-bold uppercase tracking-[0.14em] text-gradient-brand">
-          {plan.label}
+        <p className="text-sm font-bold uppercase tracking-[0.12em] text-gradient-brand">
+          {plan.cardTitle}
         </p>
-
         <p
-          className="mt-4 text-[13px]"
-          style={{ color: "rgba(255, 255, 255, 0.7)" }}
+          className="mt-4 text-4xl font-bold tracking-tight md:text-[42px]"
+          style={{ color: "var(--hero-heading)" }}
         >
-          Full amount payable
-        </p>
-        <div className="mt-1 flex flex-wrap items-baseline gap-2.5">
-          <span
-            className="text-4xl font-bold tracking-tight md:text-[42px]"
-            style={{ color: "var(--hero-heading)" }}
-          >
-            {price}
+          {price}
+          <span className="ml-2 text-base font-semibold" style={{ color: "var(--hero-muted)" }}>
+            total
           </span>
-        </div>
-
+        </p>
         <PriceGlowDivider />
-
-        <ul className="mb-8 flex flex-1 flex-col gap-3">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-3 text-[13px] leading-[1.55] sm:text-[14px]">
-              <span
-                className="mt-[9px] h-px w-3 shrink-0"
-                style={{
-                  background: "var(--grad-brand)",
-                  boxShadow: "0 0 6px rgba(232, 197, 71, 0.5)",
-                }}
-                aria-hidden
-              />
-              <span style={{ color: "rgba(255, 255, 255, 0.82)" }}>{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
-          <a
+        <p className="mb-8 flex-1 text-[13px] leading-[1.65] sm:text-[14px]" style={{ color: "rgba(255, 255, 255, 0.82)" }}>
+          {plan.pricingSummary}
+        </p>
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto w-full">
+          <Link
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
             className="flex w-full items-center justify-center rounded-lg px-6 py-3.5 text-center text-[13px] font-extrabold uppercase tracking-[0.08em] transition-all duration-200 hover:brightness-110"
             style={{
               background: "var(--grad-brand)",
@@ -166,7 +91,7 @@ function PricingCard({
             }}
           >
             Get This Plan
-          </a>
+          </Link>
         </motion.div>
       </div>
     </ScrollReveal>
@@ -174,7 +99,7 @@ function PricingCard({
 }
 
 export function MultiConnectionPlansSection() {
-  const [accounts, setAccounts] = useState<(typeof ACCOUNT_OPTIONS)[number]>(1);
+  const [connections, setConnections] = useState<(typeof CONNECTION_OPTIONS)[number]>(1);
 
   return (
     <section
@@ -189,17 +114,7 @@ export function MultiConnectionPlansSection() {
               className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Choose Your Accounts and{" "}
-              <span
-                style={{
-                  backgroundImage: "var(--grad-text)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Subscription Duration
-              </span>
+              Choose Your Strong 8k IPTV Subscription and Connection Allowance
             </h2>
           </FadeIn>
 
@@ -208,10 +123,10 @@ export function MultiConnectionPlansSection() {
               className="text-sm leading-[1.75] sm:text-[15px] md:text-right"
               style={{ color: "var(--hero-muted)" }}
             >
-              We recommend one account for each device streaming at the same time. Choose two
-              accounts for two simultaneous streams, three for three, or four for four. If you
-              watch on different supported devices at different times, one account lets you switch
-              between them while keeping to one active stream.
+              Select your connection allowance below, then choose a subscription lasting
+              1, 3, 6 or 12 months. Every plan includes the same catalogue and service
+              features. Your selected duration determines how long your subscription lasts,
+              while your connection allowance determines how many streams can play simultaneously.
             </p>
           </FadeIn>
         </div>
@@ -219,10 +134,10 @@ export function MultiConnectionPlansSection() {
         <div
           className="mb-8 flex flex-wrap gap-2 sm:gap-3"
           role="tablist"
-          aria-label="Account quantities"
+          aria-label="Connection allowance"
         >
-          {ACCOUNT_OPTIONS.map((count) => {
-            const active = accounts === count;
+          {CONNECTION_OPTIONS.map((count) => {
+            const active = connections === count;
             return (
               <button
                 key={count}
@@ -231,7 +146,7 @@ export function MultiConnectionPlansSection() {
                 id={`pricing-tab-${count}`}
                 aria-selected={active}
                 aria-controls={`pricing-panel-${count}`}
-                onClick={() => setAccounts(count)}
+                onClick={() => setConnections(count)}
                 className={cn(
                   "rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all duration-200",
                 )}
@@ -246,14 +161,14 @@ export function MultiConnectionPlansSection() {
                     : "var(--feature-card-shadow)",
                 }}
               >
-                {count} {count === 1 ? "Account" : "Accounts"}
+                {count} {count === 1 ? "Connection" : "Connections"}
               </button>
             );
           })}
         </div>
 
-        {ACCOUNT_OPTIONS.map((count) => {
-          const active = accounts === count;
+        {CONNECTION_OPTIONS.map((count) => {
+          const active = connections === count;
           return (
             <div
               key={count}
@@ -263,18 +178,18 @@ export function MultiConnectionPlansSection() {
               hidden={!active}
               className={cn(!active && "hidden")}
             >
-              <h3
-                className="mb-6 text-xl font-bold sm:text-2xl"
-                style={{ color: "var(--hero-heading)" }}
-              >
-                {count} {count === 1 ? "Account" : "Accounts"}
-              </h3>
+              <p className="mb-4 text-sm leading-[1.7]" style={{ color: "var(--hero-muted)" }}>
+                A connection means one stream playing at a time. Two connections allow two
+                simultaneous streams, three allow three and four allow four. Watching on a
+                television and using another supported device later is different from playing
+                both at once.
+              </p>
               <div className="grid w-full items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-                {PLANS.map((plan, i) => (
+                {PLAN_DURATIONS.map((plan, i) => (
                   <PricingCard
                     key={`${count}-${plan.months}`}
                     plan={plan}
-                    accounts={count}
+                    connections={count}
                     delay={active ? 0.04 * i : 0}
                   />
                 ))}
@@ -282,6 +197,24 @@ export function MultiConnectionPlansSection() {
             </div>
           );
         })}
+
+        <FadeIn delay={0.15} className="mx-auto mt-10 max-w-3xl text-center">
+          <p className="text-sm leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
+            All displayed prices are full-term totals, rather than monthly instalments.
+            Select your required connection allowance to see the corresponding amount for
+            each duration. For multi-connection IPTV, count the streams you need running
+            together rather than the total number of devices you own. Your order will
+            confirm the permitted device and location arrangement. Contact us before
+            ordering if you need several addresses or more than four simultaneous streams.
+          </p>
+          <Link
+            href={`${routes.contactUs}?enquiry=subscription`}
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-gradient-brand px-6 py-3.5 text-sm font-bold text-black"
+            style={{ boxShadow: "var(--hero-cta-primary-shadow)" }}
+          >
+            Ask About More Connections
+          </Link>
+        </FadeIn>
       </Container>
     </section>
   );

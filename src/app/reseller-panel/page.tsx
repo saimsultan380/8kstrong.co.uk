@@ -1,22 +1,33 @@
 import type { Metadata } from "next";
-import { LegacyRedirect } from "@/components/seo/legacy-redirect";
-import { createPageMetadata, pageDescriptions, pageTitles } from "@/lib/site";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { ResellerPanelHero } from "@/components/sections/reseller-panel-hero";
+import { ResellerRest } from "@/components/sections/reseller-rest";
+import { ResellerFaqSection } from "@/components/sections/reseller-faq-section";
+import { ResellerCtaSection } from "@/components/sections/reseller-cta-section";
+import { pageDescriptions, pageTitles, createPageMetadata } from "@/lib/site";
 import { routes } from "@/lib/routes";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { pageBreadcrumbs } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = createPageMetadata({
   title: pageTitles.resellerPanel,
   description: pageDescriptions.resellerPanel,
   path: routes.resellerPanel,
-  index: false,
-  follow: true,
 });
 
-export default function ResellerPanelRedirectPage() {
+export default function ResellerPanelPage() {
   return (
-    <LegacyRedirect
-      href={routes.resellerPanel}
-      message="Redirecting to the reseller panel…"
-      linkLabel="Continue to Reseller Panel"
-    />
+    <main className="relative flex flex-col">
+      <Header />
+      <Breadcrumbs items={pageBreadcrumbs.resellerPanel} />
+      <ResellerPanelHero />
+      <ResellerRest />
+      <ResellerFaqSection />
+      <ResellerCtaSection />
+      <Footer />
+      <FloatingWhatsApp />
+    </main>
   );
 }

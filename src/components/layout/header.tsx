@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: "Installation Guide", href: routes.installationGuide },
   { label: "Reseller Panel", href: routes.resellerPanel },
   { label: "Contact Us", href: routes.contactUs },
+  { label: "Blogs", href: routes.blogs },
 ];
 
 export function Header() {
@@ -43,7 +44,7 @@ export function Header() {
           >
             <Image
               src="/strong-8k.PNG?v=2"
-              alt="Strong 8K IPTV"
+              alt="Strong 8k"
               width={64}
               height={64}
               loading="eager"
@@ -97,7 +98,7 @@ export function Header() {
                   boxShadow: "var(--hero-cta-primary-shadow)",
                 }}
               >
-                Subscribe Now
+                View Plans
               </Link>
             </motion.div>
           </div>
@@ -168,7 +169,7 @@ export function Header() {
                       }}
                       onClick={closeMenu}
                     >
-                      Subscribe Now
+                      View Plans
                     </Link>
                   </motion.div>
                 </motion.div>

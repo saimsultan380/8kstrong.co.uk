@@ -1,21 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
-import {
-  whatsappMessages,
-  whatsappUrlWithText,
-} from "@/lib/site";
+import { routes } from "@/lib/routes";
 
-const BENEFITS = [
-  "Live television and on-demand content",
-  "One active stream on a standard account",
-  "Check compatibility before you order",
+const POINTS = [
+  "Account details for a supported player",
+  "The player and the subscription are separate",
+  "Ask about your device before you pay",
 ];
-
-const freeTrialWhatsapp = whatsappUrlWithText(
-  whatsappMessages.startFreeTrial,
-);
 
 export function IptvSubscriptionExplainer() {
   return (
@@ -34,7 +28,7 @@ export function IptvSubscriptionExplainer() {
               className="text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: "var(--hero-accent)" }}
             >
-              About Strong 8K
+              About Strong 8k
             </span>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -42,8 +36,7 @@ export function IptvSubscriptionExplainer() {
               className="mt-4 max-w-xl text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-[48px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              What Is{" "}
-              <span style={{ color: "var(--hero-accent)" }}>Strong 8K IPTV</span>?
+              What is Strong 8K IPTV?
             </h2>
           </FadeIn>
           <FadeIn delay={0.15}>
@@ -51,15 +44,14 @@ export function IptvSubscriptionExplainer() {
               className="mt-6 max-w-xl text-sm leading-[1.8] sm:text-[15px] md:text-base"
               style={{ color: "var(--hero-muted)" }}
             >
-              Strong 8K IPTV is a subscription service for watching live television and
-              on-demand content through an internet connection. You receive account details to
-              enter into a compatible IPTV player.
+              Strong 8k IPTV delivers live channels and on-demand entertainment
+              over an internet connection. You receive account details to add to
+              a supported player, then browse the available catalogue.
             </p>
           </FadeIn>
-
           <FadeIn delay={0.2}>
             <ul className="mt-8 space-y-3">
-              {BENEFITS.map((benefit) => (
+              {POINTS.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3 text-sm">
                   <span
                     className="mt-[9px] h-px w-3 shrink-0"
@@ -88,8 +80,8 @@ export function IptvSubscriptionExplainer() {
             >
               {[
                 { value: "40K+", label: "Live channels" },
-                { value: "8K", label: "UHD options" },
-                { value: "1", label: "Screen as standard" },
+                { value: "140K+", label: "VOD titles" },
+                { value: "24/7", label: "Customer support" },
               ].map(({ value, label }) => (
                 <div key={label}>
                   <p className="text-2xl font-black tracking-tight text-gradient-brand sm:text-3xl">
@@ -109,19 +101,27 @@ export function IptvSubscriptionExplainer() {
                 className="text-sm leading-[1.8] sm:text-[15px] md:text-base"
                 style={{ color: "var(--feature-body)" }}
               >
-                A standard account allows one active stream at a time. Additional accounts are
-                available when several devices need to stream simultaneously. You can check
-                compatibility and test the service before ordering.
+                The player provides the screen layout and playback controls. Your
+                subscription provides service access. They are separate, and some
+                third-party apps charge for their own licence or premium features.
+              </p>
+              <p
+                className="text-sm leading-[1.8] sm:text-[15px] md:text-base"
+                style={{ color: "var(--feature-body)" }}
+              >
+                If you are unsure which player to choose, send us your device
+                model. We can explain the suitable installation route and account
+                format before you pay. Our aim is to make the service useful for
+                your household: clear plans, practical setup help and a way to ask
+                about the programmes you enjoy.
               </p>
             </div>
-            <a
-              href={freeTrialWhatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={routes.installationGuide}
               className="mt-8 inline-flex text-sm font-bold underline transition-opacity hover:opacity-85 text-gradient-brand"
             >
-              Start free trial →
-            </a>
+              Find your installation instructions →
+            </Link>
           </div>
         </FadeIn>
       </Container>

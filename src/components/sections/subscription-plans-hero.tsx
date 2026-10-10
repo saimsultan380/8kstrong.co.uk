@@ -5,7 +5,8 @@ import { Container } from "@/components/layout/container";
 import { HeroReveal } from "@/components/animation/hero-reveal";
 import { HeroTitleReveal } from "@/components/animation/hero-title-reveal";
 import { motion } from "framer-motion";
-import { whatsappUrlWithText } from "@/lib/site";
+import { routes } from "@/lib/routes";
+import Link from "next/link";
 
 export function SubscriptionPlansHero() {
   return (
@@ -20,35 +21,29 @@ export function SubscriptionPlansHero() {
               boxShadow: "var(--glass-shadow)",
             }}
           >
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ backgroundColor: "var(--hero-accent)" }}
-            />
-            <span
-              className="text-[11px] font-bold uppercase tracking-[0.2em]"
-              style={{ color: "var(--hero-accent)" }}
-            >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--hero-accent)" }} />
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--hero-accent)" }}>
               Pricing
             </span>
           </div>
         </HeroReveal>
 
         <HeroTitleReveal
-          className="mx-auto max-w-[920px] text-center text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-[48px] lg:text-[54px]"
+          className="mx-auto max-w-[920px] text-center text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-[44px] lg:text-[48px]"
           style={{ color: "var(--hero-heading)" }}
-          lines={[
-            <>
-              Strong 8K <span style={{ color: "var(--hero-accent)" }}>Subscription Prices</span>
-            </>,
-          ]}
+          lines={["Strong 8k IPTV Subscription Plans for Every UK Household"]}
         />
 
         <HeroReveal delay={0.18}>
           <div className="mx-auto mt-6 max-w-[750px] space-y-4 text-sm leading-[1.8] sm:text-[15px] md:text-base">
             <p style={{ color: "var(--hero-muted)" }}>
-              Choose your subscription duration and the number of devices you want to stream on
-              at the same time. Every option includes the same service catalogue; your total price
-              depends on the duration and account quantity selected.
+              Choose a Strong 8k IPTV subscription with 40,000+ live channels, 140,000+ VOD titles and 24/7 customer support.
+            </p>
+            <p style={{ color: "var(--hero-muted)" }}>
+              Our premium IPTV plans bring together UK-focused viewing, international channels, films and series. Choose how long you want your subscription to last and how many streams you need playing at the same time.
+            </p>
+            <p style={{ color: "var(--hero-muted)" }}>
+              Strong 8k IPTV subscription prices are shown in pounds sterling. Every amount covers the complete selected term.
             </p>
           </div>
         </HeroReveal>
@@ -68,12 +63,9 @@ export function SubscriptionPlansHero() {
                 <ArrowRight className="h-4 w-4 opacity-75" />
               </a>
             </motion.div>
-
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a
-                href={whatsappUrlWithText("Start-free-trial")}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`${routes.contactUs}?enquiry=free-trial`}
                 className="flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border px-7 py-3.5 text-sm font-semibold transition-all duration-200 hover:border-[var(--hero-accent)] hover:text-[var(--hero-accent)] sm:w-auto sm:max-w-none sm:text-[15px]"
                 style={{
                   borderColor: "var(--hero-btn-border)",
@@ -81,8 +73,8 @@ export function SubscriptionPlansHero() {
                   backgroundColor: "var(--hero-pill-bg)",
                 }}
               >
-                Start 24-Hour Free Trial
-              </a>
+                Request Your Free Trial
+              </Link>
             </motion.div>
           </div>
         </HeroReveal>

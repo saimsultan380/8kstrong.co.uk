@@ -4,7 +4,8 @@ import { Container } from "@/components/layout/container";
 import { HeroReveal } from "@/components/animation/hero-reveal";
 import { HeroTitleReveal } from "@/components/animation/hero-title-reveal";
 
-const WHATSAPP_LINK = "https://wa.me/447401921250";
+import Link from "next/link";
+import { routes } from "@/lib/routes";
 
 export function ResellerPanelHero() {
   return (
@@ -34,32 +35,30 @@ export function ResellerPanelHero() {
         <HeroTitleReveal
           className="mx-auto max-w-[960px] text-center text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-[48px] lg:text-[54px]"
           style={{ color: "var(--hero-heading)" }}
-          lines={[
-            "Strong 8K Reseller Panel",
-            <span key="accent" style={{ color: "var(--hero-accent)" }}>
-              and Wholesale Credits
-            </span>,
-          ]}
+          lines={["Strong 8k Reseller Panel with Credits and White Label Branding"]}
         />
 
         <HeroReveal delay={0.18}>
           <div className="mx-auto mt-6 max-w-[760px] space-y-4 text-sm leading-[1.75] sm:text-[15px] md:text-base">
             <p style={{ color: "var(--hero-muted)" }}>
-              Manage customer accounts, subscription durations and renewals through the Strong 8K
-              reseller panel. Compare the available credit packages and request a demonstration
-              before choosing an option.
+              Sell subscriptions to your own customers using the Strong 8k reseller dashboard.
             </p>
             <p style={{ color: "var(--hero-muted)" }}>
-              Contact our team for wholesale pricing, credit rules, branding options and the
-              support arrangements that apply to your reseller account.
+              Purchase credits, manage customer access and set your retail prices. The minimum initial purchase required to create a panel is 120 credits.
+            </p>
+            <p style={{ color: "var(--hero-muted)" }}>
+              After payment, we activate access using the email address and username you provide.
+            </p>
+            <p style={{ color: "var(--hero-muted)" }}>
+              We offer White Label Branding, allowing you to present the reseller panel under your own business brand. VPS and VPN-compatible URL arrangements are available according to your requirements.
             </p>
           </div>
         </HeroReveal>
 
         <HeroReveal variant="cta" delay={0.34}>
           <div className="mt-8 flex flex-row items-center justify-center gap-3">
-            <a
-              href="#reseller-plans"
+            <Link
+              href={`${routes.contactUs}?enquiry=reseller-pricing`}
               className="flex min-h-12 flex-1 items-center justify-center rounded-xl px-4 py-3.5 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:flex-initial sm:px-7 sm:text-[15px]"
               style={{
                 background: "var(--hero-cta-primary-bg)",
@@ -67,10 +66,10 @@ export function ResellerPanelHero() {
                 color: "var(--hero-cta-primary-fg)",
               }}
             >
-              Buy Reseller Panel
-            </a>
+              Contact Us for Reseller Pricing
+            </Link>
             <a
-              href={WHATSAPP_LINK}
+              href="#reseller-plans"
               className="flex min-h-12 flex-1 items-center justify-center rounded-xl border px-4 py-3.5 text-[13px] font-semibold transition-all duration-200 hover:border-[var(--hero-accent)] sm:flex-initial sm:px-7 sm:text-[15px]"
               style={{
                 borderColor: "var(--hero-btn-border)",
@@ -78,7 +77,7 @@ export function ResellerPanelHero() {
                 backgroundColor: "transparent",
               }}
             >
-              Request a Free Demo
+              See Credit Requirements
             </a>
           </div>
         </HeroReveal>

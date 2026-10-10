@@ -2,25 +2,26 @@
  * Site-wide brand & SEO defaults for Strong 8K IPTV.
  *
  * Canonical rule: always HTTPS + non-www + trailing slash
- * e.g. https://strong-8k.co.uk/iptv-subscription-plans/
+ * e.g. https://8k-strong.co.uk/pricing/
  */
 import type { Metadata } from "next";
 import { routes } from "@/lib/routes";
 
 export const siteConfig = {
-  name: "Strong 8K IPTV",
-  shortName: "Strong 8K",
-  tagline: "Premium Live TV with 40,000+ Channels and 8K UHD",
+  name: "Strong 8k",
+  shortName: "Strong 8k",
+  tagline: "Premium UHD IPTV Subscription For UK with 40k+ Channels",
   description:
-    "Strong 8K IPTV offers a premium IPTV subscription for UK viewers. Explore live TV, movies and series, and request a free 24-hour trial.",
+    "Watch Strong 8k IPTV with 40,000+ channels and 140,000+ VOD titles. Explore UHD viewing, content requests, subscriptions and a free trial.",
   /** Canonical origin — HTTPS, non-www, no trailing slash on the origin itself */
-  siteUrl: "https://strong-8k.co.uk",
+  siteUrl: "https://8k-strong.co.uk",
   email: "support@strong8k.com",
   /** Display format for the public support number */
   phone: "+44 7401 921250",
   /** Digits only for wa.me / tel: links (no + or spaces) */
   phoneE164: "447401921250",
   locale: "en_GB",
+  language: "en-GB",
   twitterHandle: "@strong8k",
 } as const;
 
@@ -43,26 +44,30 @@ export function whatsappUrlWithText(text: string): string {
 
 /** Exact SERP titles (shown in Google + browser tab) */
 export const pageTitles = {
-  home: "Strong 8K IPTV – Premium IPTV Subscription with 4K & 8K",
-  subscriptionPlans: "IPTV Subscription Prices & Plans | Strong 8K",
-  installationGuide: "Strong 8K Installation Guide | Supported Device Setup",
-  resellerPanel: "Strong 8K Reseller Panel | Wholesale Credits & Accounts",
-  contactUs: "Contact Strong 8K | Support & Trial Requests",
-  notFound: "Page Not Found | Strong 8K IPTV",
+  home: "Strong 8k - Premium UHD IPTV Subscription For UK with 40k+ Channels",
+  subscriptionPlans:
+    "Strong 8k IPTV Subscription Prices for Multiple UK Connections",
+  installationGuide: "Strong 8k IPTV Installation Guide for All Supported Devices",
+  resellerPanel: "Strong 8k Reseller Panel UK with White Label Branding",
+  contactUs: "Contact Strong 8k for IPTV Trials and Customer Support",
+  blogs: "Strong 8k IPTV Blog with Setup and Viewing Guides",
+  notFound: "Page Not Found | Strong 8k",
 } as const;
 
 export const pageDescriptions = {
-  home: siteConfig.description,
+  home: "Watch Strong 8k IPTV with 40,000+ channels and 140,000+ VOD titles. Explore UHD viewing, content requests, subscriptions and a free trial.",
   subscriptionPlans:
-    "Compare Strong 8K subscription prices by duration and account quantity. Review device options, included features, activation and refund terms.",
+    "Choose Strong 8k IPTV plans for 1, 3, 6 or 12 months. See prices for one to four simultaneous connections, supported devices and customer support.",
   installationGuide:
-    "Set up Strong 8K IPTV on supported TVs, Firestick, Android, iPhone and computers. Find login instructions, the app code and troubleshooting help.",
+    "Install Strong 8k using app code 4330396 or a compatible player. Find setup help for Firestick, Android, Smart TV, iPhone, Windows, Mac and Roku.",
   resellerPanel:
-    "Explore the Strong 8K reseller panel, credit packages and account management. Request wholesale pricing, a dashboard demo and reseller support.",
+    "Get a Strong 8k reseller dashboard from 120 credits. Ask about White Label Branding, activation, branded URLs, VPS options and reseller support.",
   contactUs:
-    "Contact Strong 8K for account help, installation support, renewals, reseller enquiries or a free 24-hour trial. Reach the team by WhatsApp or email.",
+    "Contact Strong 8k for a free trial, subscription help, installation, film and series requests or reseller pricing. Customer support is available 24/7.",
+  blogs:
+    "Read Strong 8k IPTV guides for setup, playback problems, Reddit reviews, 8k VIP labels and Xtream Codes. Find practical help for UK viewers.",
   notFound:
-    "The page you are looking for could not be found. Browse Strong 8K IPTV plans, installation guides, or contact support.",
+    "The page you are looking for could not be found. Browse Strong 8k plans, installation guides, blogs or contact support.",
 } as const;
 
 /** Indexable routes used by sitemap (canonical paths with trailing slash). */
@@ -87,6 +92,11 @@ export const sitemapRoutes = [
     path: routes.contactUs,
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  },
+  {
+    path: routes.blogs,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   },
 ] as const;
 
@@ -159,14 +169,13 @@ export const siteMetadataBase: Metadata = {
   publisher: siteConfig.name,
   metadataBase: new URL(canonicalUrl(routes.home)),
   keywords: [
-    "Strong 8K IPTV",
-    "8K IPTV",
-    "IPTV UK",
-    "IPTV USA",
+    "Strong 8k",
+    "Strong8k",
+    "Strong 8k IPTV",
+    "Strong 8k IPTV subscription",
+    "UK IPTV",
+    "UHD IPTV",
     "IPTV subscription",
-    "Firestick IPTV",
-    "4K IPTV",
-    "IPTV reseller",
   ],
   // Canonical is set per-page via createPageMetadata — never inherit homepage here.
   openGraph: {

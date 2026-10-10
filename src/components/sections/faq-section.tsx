@@ -17,71 +17,56 @@ export type FaqItem = {
 
 const HOMEPAGE_FAQS: FaqItem[] = [
   {
-    id: "what-is",
-    q: "What is Strong 8K IPTV?",
-    a: "Strong 8K IPTV is a subscription for live television and on-demand films and series, played through a compatible app on your own device.",
+    id: "name",
+    q: "Are Strong 8k and Strong8k the same name here?",
+    a: "Strong 8k is our brand. Strong8k is the joined-up spelling. This website uses 8k-strong.co.uk.",
   },
   {
-    id: "devices",
-    q: "Which devices can I use?",
+    id: "provider",
+    q: "How do I identify the right provider?",
+    a: "Search terms such as Strong IPTV, Strong IPTV 8k, IPTV Strong 8k or 8k Strong can lead to different sellers. Check the domain and contact route connected with your order.",
+  },
+  {
+    id: "uk-content",
+    q: "How do I choose the best UK content for my household?",
+    a: "Check the channels, titles and languages you actually watch. Ask us about availability and test the service before deciding.",
+  },
+  {
+    id: "premium",
+    q: "Does a premium IPTV subscription include every channel?",
+    a: "A premium description does not guarantee a specific channel, title or event. Ask us to check the content essential to your purchase.",
+  },
+  {
+    id: "reviews",
+    q: "Can I read independent reviews?",
     a: (
       <>
-        Supported setups include Smart TVs, Firestick, Android, iPhone, iPad, Windows and Mac,
-        when a compatible player is available. See the{" "}
+        Yes. Check the exact website, date, device and account described. Our{" "}
         <Link
-          href={routes.installationGuide}
+          href={routes.blogs}
           className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
           style={{ color: "var(--hero-heading)" }}
         >
-          installation guide
+          Blogs
         </Link>{" "}
-        for the steps that match your device.
+        page explains how to assess Strong 8k IPTV Reddit discussions.
       </>
     ),
   },
   {
-    id: "8k",
-    q: "Does an 8K IPTV subscription make every channel 8K?",
-    a: "No. Resolution depends on the source stream and the full playback setup: the player, the screen and the connection. Up to 8K UHD is available only on supported content.",
-  },
-  {
-    id: "more-devices",
-    q: "Can I watch on more than one device?",
+    id: "refund",
+    q: "Where can I read the refund terms?",
     a: (
       <>
-        One account allows one active stream. You can switch that login between supported devices
-        at different times. For simultaneous streams, choose extra accounts on the{" "}
+        Read the refund terms on our{" "}
         <Link
-          href={routes.subscriptionPlans}
+          href={`${routes.subscriptionPlans}#refund-policy`}
           className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
           style={{ color: "var(--hero-heading)" }}
         >
-          Pricing
+          Pricing page
         </Link>{" "}
-        page.
-      </>
-    ),
-  },
-  {
-    id: "trial",
-    q: "Can I test the service before subscribing?",
-    a: "Yes. Request a free 24-hour trial. No card details are required, and the trial ends without an automatic charge.",
-  },
-  {
-    id: "support",
-    q: "How do I get technical support?",
-    a: (
-      <>
-        Message the team on WhatsApp or use the{" "}
-        <Link
-          href={routes.contactUs}
-          className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-          style={{ color: "var(--hero-heading)" }}
-        >
-          contact page
-        </Link>
-        . Include your device model, app name and the message on screen. Support continues
-        throughout an active subscription.
+        before ordering. They explain the subscription guarantee and request process.
       </>
     ),
   },
@@ -119,7 +104,7 @@ function AccordionItem({
           )}
           aria-expanded={isOpen}
         >
-          <h3
+          <p
             className={cn(
               "font-bold leading-snug",
               compact ? "text-sm" : "text-[15px] md:text-base"
@@ -127,7 +112,7 @@ function AccordionItem({
             style={{ color: "var(--hero-heading)" }}
           >
             {faq.q}
-          </h3>
+          </p>
           <span
             className={cn(
               "flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300",
@@ -286,11 +271,12 @@ export function FaqSection() {
   return (
     <FaqAccordionSection
       faqs={HOMEPAGE_FAQS}
-      defaultOpenId="what-is-strong-8k"
+      defaultOpenId="name"
+      eyebrow="FAQ"
+      description="Brand name, content, reviews and refund terms."
       title={
         <>
-          Strong 8K IPTV{" "}
-          <span style={{ color: "var(--hero-accent)" }}>Questions Answered</span>
+          Answers to Common Questions Before Choosing Your Subscription
         </>
       }
     />

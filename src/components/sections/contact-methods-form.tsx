@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { MessageCircle, Mail } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
@@ -10,11 +10,14 @@ import { siteConfig } from "@/lib/site";
 const WHATSAPP_LINK = "https://wa.me/447401921250";
 
 const ENQUIRY_TYPES = [
-  "Technical support",
-  "Trial request",
-  "Pricing or new order",
+  "Free trial",
+  "Subscription",
   "Renewal",
-  "Reseller enquiry",
+  "Installation",
+  "Playback",
+  "Content request",
+  "Reseller pricing",
+  "Refund",
 ];
 
 const DEVICES = [
@@ -39,6 +42,20 @@ const inputStyle = {
 export function ContactMethodsForm() {
   const [submitted, setSubmitted] = useState(false);
   const [replyError, setReplyError] = useState(false);
+  const [planNote, setPlanNote] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get("plan");
+    const connections = params.get("connections");
+    if (plan || connections) {
+      setPlanNote(
+        [plan ? `Plan: ${plan}` : "", connections ? `Connections: ${connections}` : ""]
+          .filter(Boolean)
+          .join(", "),
+      );
+    }
+  }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,6 +81,7 @@ export function ContactMethodsForm() {
       `WhatsApp: ${whatsapp || "Not provided"}`,
       `Device: ${device}`,
       `Enquiry: ${enquiry}`,
+      planNote ? `Selected: ${planNote}` : "",
       `Message: ${message}`,
     ].join("\n");
 
@@ -96,8 +114,7 @@ export function ContactMethodsForm() {
             className="mt-3 max-w-3xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-[36px]"
             style={{ color: "var(--hero-heading)" }}
           >
-            Speak to Our{" "}
-            <span style={{ color: "var(--hero-accent)" }}>Support Team</span>
+            Send Your Enquiry with the Relevant Account Details
           </h2>
         </FadeIn>
 
@@ -120,8 +137,7 @@ export function ContactMethodsForm() {
                 WhatsApp
               </p>
               <p className="mt-2 text-sm leading-[1.7]" style={{ color: "var(--feature-body)" }}>
-                Contact our 24/7 team on {siteConfig.phone} for trial requests, orders, renewals
-                and technical help.
+                WhatsApp: {siteConfig.phone}. Customer support is available 24/7.
               </p>
             </a>
           </ScrollReveal>
@@ -144,10 +160,7 @@ export function ContactMethodsForm() {
                 Email
               </p>
               <p className="mt-2 text-sm leading-[1.7]" style={{ color: "var(--feature-body)" }}>
-                Send longer questions to{" "}
-                <span style={{ color: "var(--hero-accent)" }}>{siteConfig.email}</span>. For an
-                account issue, include your app name, device model and error message. Keep your
-                password out of public messages and screenshots.
+                Email: {siteConfig.email}. Do not include your account password.
               </p>
             </a>
           </ScrollReveal>
@@ -158,10 +171,10 @@ export function ContactMethodsForm() {
             className="mt-10 text-2xl font-bold leading-tight tracking-tight sm:text-3xl"
             style={{ color: "var(--hero-heading)" }}
           >
-            Send an Enquiry
+            Your message
           </h2>
           <p className="mt-3 text-sm leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
-            Add an email address or a WhatsApp number. You do not need both.
+            Include the details needed for your enquiry. Do not enter your account password.
           </p>
         </FadeIn>
 
@@ -220,7 +233,7 @@ export function ContactMethodsForm() {
 
               <label className="block space-y-2">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--hero-muted)" }}>
-                  Device
+                  Device and player
                 </span>
                 <select
                   name="device"
@@ -271,7 +284,7 @@ export function ContactMethodsForm() {
                 name="message"
                 required
                 rows={4}
-                placeholder="Tell us what you need — free trial, setup help, plan advice..."
+                placeholder="Free trial, subscription, installation, playback, content request or reseller pricing"
                 className={`${inputClass} resize-y`}
                 style={inputStyle}
               />
@@ -287,7 +300,7 @@ export function ContactMethodsForm() {
                   color: "var(--hero-cta-primary-fg)",
                 }}
               >
-                Send Message →
+                Send My Enquiry
               </button>
               {submitted ? (
                 <p className="text-sm" style={{ color: "var(--hero-accent)" }}>
@@ -300,6 +313,11 @@ export function ContactMethodsForm() {
                 </p>
               ) : null}
             </div>
+            {planNote ? (
+              <p className="mt-4 text-sm" style={{ color: "var(--hero-heading)" }}>
+                This enquiry includes {planNote}.
+              </p>
+            ) : null}
             <p className="mt-4 text-xs leading-[1.7]" style={{ color: "var(--hero-muted)" }}>
               This form opens WhatsApp with your message. We use the details only to reply to
               your enquiry. There is no separate privacy page on this site.

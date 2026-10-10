@@ -7,8 +7,6 @@ import { Container } from "@/components/layout/container";
 import { HeroReveal } from "@/components/animation/hero-reveal";
 import { HeroTitleReveal } from "@/components/animation/hero-title-reveal";
 
-const WHATSAPP_LINK = "https://wa.me/447401921250";
-
 export function InstallationGuideHero() {
   return (
     <section className="relative isolate overflow-hidden pb-16 md:pb-20">
@@ -37,24 +35,19 @@ export function InstallationGuideHero() {
         <HeroTitleReveal
           className="mx-auto max-w-[920px] text-center text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-[48px] lg:text-[52px]"
           style={{ color: "var(--hero-heading)" }}
-          lines={[
-            "Strong 8K IPTV Installation Guide",
-            <span key="accent" style={{ color: "var(--hero-accent)" }}>
-              for Supported Devices
-            </span>,
-          ]}
+          lines={["Strong 8k IPTV Installation Guide for TVs, Phones and Computers"]}
         />
 
         <HeroReveal delay={0.18}>
           <div className="mx-auto mt-6 max-w-[760px] space-y-4 text-sm leading-[1.75] sm:text-[15px] md:text-base">
             <p style={{ color: "var(--hero-muted)" }}>
-              Set up your Strong 8K account or trial using the instructions for your device. Have
-              your login details ready, choose a compatible player and follow the relevant steps
-              below.
+              Select your device to see the recommended apps and setup instructions for Strong 8k.
             </p>
             <p style={{ color: "var(--hero-muted)" }}>
-              If a menu or login screen differs, contact support with your device model, app name
-              and the message displayed. Keep passwords and account links out of public screenshots.
+              For compatible Fire OS and Android devices, our current app is available through Strong 8k Downloader code 4330396. The previous version used 439873.
+            </p>
+            <p style={{ color: "var(--hero-muted)" }}>
+              For Smart TVs, Apple devices, computers and Roku, choose a compatible player and use the account details supplied by support.
             </p>
           </div>
         </HeroReveal>
@@ -62,8 +55,8 @@ export function InstallationGuideHero() {
         <HeroReveal variant="cta" delay={0.34}>
           <div className="mt-8 flex flex-row items-center justify-center gap-3">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
-              <a
-                href={WHATSAPP_LINK}
+              <Link
+                href={`${routes.contactUs}?enquiry=installation`}
                 className="flex min-h-12 items-center justify-center rounded-xl px-4 py-3.5 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:px-7 sm:text-[15px]"
                 style={{
                   background: "var(--hero-cta-primary-bg)",
@@ -71,8 +64,8 @@ export function InstallationGuideHero() {
                   color: "var(--hero-cta-primary-fg)",
                 }}
               >
-                Get Setup Help
-              </a>
+                Contact Installation Support
+              </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
               <Link

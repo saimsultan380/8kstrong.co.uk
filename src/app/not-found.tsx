@@ -25,7 +25,8 @@ const HELPFUL_LINKS = [
   { label: "Pricing", href: routes.subscriptionPlans },
   { label: "Installation Guide", href: routes.installationGuide },
   { label: "Reseller Panel", href: routes.resellerPanel },
-  { label: "Free Trial / Contact", href: routes.contactUs },
+  { label: "Blogs", href: routes.blogs },
+  { label: "Contact Us", href: routes.contactUs },
 ];
 
 export default function NotFound() {
@@ -48,7 +49,7 @@ export default function NotFound() {
             style={{ color: "var(--hero-muted)" }}
           >
             This URL doesn&apos;t exist or may have moved. Use the links below
-            to get back to Strong 8K IPTV.
+            to get back to Strong 8k.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

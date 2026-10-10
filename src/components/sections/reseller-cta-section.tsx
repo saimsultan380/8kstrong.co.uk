@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
-
-const WHATSAPP_LINK = "https://wa.me/447401921250";
+import { routes } from "@/lib/routes";
 
 export function ResellerCtaSection() {
   return (
@@ -35,8 +35,7 @@ export function ResellerCtaSection() {
               className="mx-auto mt-4 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Request Pricing or a{" "}
-              <span style={{ color: "var(--hero-accent)" }}>Panel Demonstration</span>
+              Contact Us for Your Reseller Credit Price Quote
             </h2>
           </FadeIn>
 
@@ -45,40 +44,39 @@ export function ResellerCtaSection() {
               className="mx-auto mt-7 max-w-[680px] text-[15px] leading-[1.8]"
               style={{ color: "var(--hero-muted)" }}
             >
-              Explore the Strong 8K reseller panel with a demonstration, then choose the credit
-              balance that suits your operation. Our team can explain the current prices, account
-              tools and permitted sales territories.
+              Tell us your credit quantity and any branding or technical requirements.
+              We will confirm the price, panel setup and activation details.
             </p>
           </FadeIn>
 
           <ScrollReveal direction="up" delay={0.1} once>
             <div className="mt-10 flex flex-row items-center justify-center gap-3">
-              <motion.a
-                href="#reseller-plans"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="flex min-h-12 flex-1 items-center justify-center rounded-xl px-4 py-3.5 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:flex-initial sm:px-8 sm:text-[15px]"
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
+              <Link
+                href={`${routes.contactUs}?enquiry=reseller-pricing`}
+                className="flex min-h-12 items-center justify-center rounded-xl px-4 py-3.5 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:px-8 sm:text-[15px]"
                 style={{
                   background: "var(--hero-cta-primary-bg)",
                   boxShadow: "var(--hero-cta-primary-shadow)",
                   color: "var(--hero-cta-primary-fg)",
                 }}
               >
-                Buy Reseller Panel
-              </motion.a>
-              <motion.a
-                href={WHATSAPP_LINK}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="flex min-h-12 flex-1 items-center justify-center rounded-xl border px-4 py-3.5 text-[13px] font-semibold transition-all duration-200 hover:border-[var(--hero-accent)] sm:flex-initial sm:px-8 sm:text-[15px]"
+                Contact Us for a Quote
+              </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
+              <Link
+                href={routes.installationGuide}
+                className="flex min-h-12 items-center justify-center rounded-xl border px-4 py-3.5 text-[13px] font-semibold transition-all duration-200 hover:border-[var(--hero-accent)] sm:px-8 sm:text-[15px]"
                 style={{
                   borderColor: "var(--hero-btn-border)",
                   color: "var(--hero-cta-secondary-text)",
                   backgroundColor: "transparent",
                 }}
               >
-                Request a Free Demo
-              </motion.a>
+                Read the Installation Guide
+              </Link>
+              </motion.div>
             </div>
           </ScrollReveal>
         </div>

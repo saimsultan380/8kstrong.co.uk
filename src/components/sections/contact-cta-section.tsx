@@ -27,7 +27,7 @@ export function ContactCtaSection() {
               className="text-[11px] font-bold uppercase tracking-[0.22em]"
               style={{ color: "var(--hero-accent)" }}
             >
-              24-Hour Trial
+              Free trial
             </span>
           </FadeIn>
 
@@ -36,8 +36,7 @@ export function ContactCtaSection() {
               className="mx-auto mt-3 max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-[36px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Request a Free{" "}
-              <span style={{ color: "var(--hero-accent)" }}>24-Hour Trial</span>
+              Request Your Strong 8k Free Trial Through Support
             </h2>
           </FadeIn>
 
@@ -46,10 +45,12 @@ export function ContactCtaSection() {
               className="mx-auto mt-5 max-w-[560px] text-sm leading-[1.8] sm:text-[15px]"
               style={{ color: "var(--hero-muted)" }}
             >
-              Tell us your device model and request a free 24-hour trial. We will provide the
-              account details and confirm when your trial begins. Test the available channels,
-              on-demand content and playback on your own connection. No card details are required,
-              and trial access expires without an automatic charge.
+              Contact us to request a Strong 8k free trial on the device and connection you
+              intend to use. Send your device model and preferred player. Mention any important
+              channel, title, language or feature you want to check. We will confirm the available
+              trial duration, start time and account instructions. Use the trial to test live
+              playback, an on-demand film and a series. EPG and catch-up are limited, so check
+              those features on the relevant channels.
             </p>
           </FadeIn>
 

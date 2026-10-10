@@ -6,58 +6,53 @@ import { routes } from "@/lib/routes";
 import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
+const linkClass = "font-semibold underline transition-colors hover:text-[var(--hero-accent)]";
+
 const TOPICS = [
   {
-    title: "Plan selection",
+    title: "Ask About the Right Subscription for Your Household",
     body: (
       <>
-        Compare the total price and the one-screen allowance on the{" "}
-        <Link
-          href={routes.subscriptionPlans}
-          className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-          style={{ color: "var(--hero-heading)" }}
-        >
-          Subscription Plans
-        </Link>{" "}
-        page.
+        Tell us whether you want one, three, six or twelve months and how many simultaneous streams your household needs. If you are unsure, describe your normal viewing arrangement and the devices involved. We can check compatibility and confirm the total before ordering.{" "}
+        <Link href={routes.subscriptionPlans} className={linkClass} style={{ color: "var(--hero-heading)" }}>
+          View Subscription Prices
+        </Link>
       </>
     ),
   },
   {
-    title: "Setup",
+    title: "Get Strong 8k Installation Help for Your Device",
     body: (
       <>
-        Follow the{" "}
-        <Link
-          href={routes.installationGuide}
-          className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-          style={{ color: "var(--hero-heading)" }}
-        >
-          device steps
-        </Link>{" "}
-        and send the model if a menu differs.
+        Send your device make and model, app name and the step you reached. For compatible Fire OS and Android devices, the current app code is 4330396. The earlier version used 439873. If an installation or login message appears, copy the exact wording or send a screenshot with credentials hidden.{" "}
+        <Link href={routes.installationGuide} className={linkClass} style={{ color: "var(--hero-heading)" }}>
+          Read the Installation Guide
+        </Link>
       </>
     ),
   },
   {
-    title: "Reseller enquiries",
-    body: (
-      <>
-        Request the credit price sheet through the{" "}
-        <Link
-          href={routes.resellerPanel}
-          className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-          style={{ color: "var(--hero-heading)" }}
-        >
-          Reseller Panel
-        </Link>{" "}
-        route.
-      </>
-    ),
+    title: "Request Your Favourite Films, Series and Missing Episodes",
+    body: "Send the exact title and release year. For a series, include the season and episode numbers. Mention your preferred audio language and any subtitle requirement. We will check whether the requested content is available to add. Timing depends on the title and source. If an existing title fails to play, include the device and player details so we can investigate it as a fault.",
   },
   {
-    title: "Existing customers",
-    body: "Send a concise account question and the time of any playback problem.",
+    title: "Check Current Channel Availability and Live Event Updates",
+    body: "Ask us about a particular channel, live event or language before ordering. Include the name and scheduled date for an event. For a programme or title, provide enough detail to identify the correct version. Our team can check current information and explain availability. Event updates should not be treated as a guarantee that every broadcast worldwide is included.",
+  },
+  {
+    title: "Report Playback Problems with the Details We Need",
+    body: "A useful support message includes your account or order reference, device model, player name, affected channel or title, when the problem began, the error shown, whether other content works and whether another device is streaming. For buffering, say whether the device uses Wi-Fi or a wired connection. For a missing guide, explain whether playback still works. Keep passwords and complete playlist links private.",
+  },
+  {
+    title: "Ask About Strong 8k Reseller Pricing and Branding",
+    body: (
+      <>
+        The minimum initial purchase for a reseller dashboard is 120 credits. Tell us the credit quantity you want and whether you need a personal domain, branded panel URL, VPS arrangement or VPN-compatible address. Panel activation after payment uses the email address and username you provide.{" "}
+        <Link href={routes.resellerPanel} className={linkClass} style={{ color: "var(--hero-heading)" }}>
+          View Reseller Information
+        </Link>
+      </>
+    ),
   },
 ];
 
@@ -82,36 +77,15 @@ export function ContactHelpTopics() {
             className="mt-3 max-w-3xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-[36px]"
             style={{ color: "var(--hero-heading)" }}
           >
-            Help with Your{" "}
-            <span style={{ color: "var(--hero-accent)" }}>Account</span>
+            What you can ask support
           </h2>
         </FadeIn>
         <FadeIn delay={0.15}>
           <div className="mt-5 max-w-3xl space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
             <p>
-              For setup instructions, visit our{" "}
-              <Link href={routes.installationGuide} className="font-semibold underline" style={{ color: "var(--hero-heading)" }}>
-                Installation Guide
-              </Link>
-              . For subscription duration and account options, visit{" "}
-              <Link href={routes.subscriptionPlans} className="font-semibold underline" style={{ color: "var(--hero-heading)" }}>
-                Pricing
-              </Link>
-              . Business enquiries about wholesale credits should use our{" "}
-              <Link href={routes.resellerPanel} className="font-semibold underline" style={{ color: "var(--hero-heading)" }}>
-                Reseller Panel
-              </Link>{" "}
-              page.
-            </p>
-            <p>
-              If a problem continues after seven days, contact us. We continue providing support
-              throughout your active subscription. Refund eligibility is explained in our{" "}
-              <Link
-                href={`${routes.subscriptionPlans}#refund-policy`}
-                className="font-semibold underline"
-                style={{ color: "var(--hero-heading)" }}
-              >
-                refund policy
+              Use the topics below for trials, subscriptions, installation, content requests, live events, playback and reseller pricing.{" "}
+              <Link href={`${routes.subscriptionPlans}#refund-policy`} className="font-semibold underline" style={{ color: "var(--hero-heading)" }}>
+                Read the Refund Terms
               </Link>
               .
             </p>

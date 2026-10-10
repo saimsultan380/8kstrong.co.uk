@@ -7,8 +7,6 @@ import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 
-const WHATSAPP_LINK = "https://wa.me/447401921250";
-
 export function InstallationCtaSection() {
   return (
     <section
@@ -37,25 +35,17 @@ export function InstallationCtaSection() {
               className="mx-auto mt-4 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Need Help Completing{" "}
-              <span style={{ color: "var(--hero-accent)" }}>Setup</span>?
+              Get Installation Help for Your Device and Player
             </h2>
           </FadeIn>
 
           <FadeIn delay={0.15}>
             <div className="mx-auto mt-7 max-w-[680px] space-y-4 text-[15px] leading-[1.8]">
               <p style={{ color: "var(--hero-muted)" }}>
-                Technical support continues throughout your active subscription, including after
-                the first seven days. Contact us with your device, app and a description of the
-                problem. You can also review{" "}
-                <Link
-                  href={routes.subscriptionPlans}
-                  className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-                  style={{ color: "var(--hero-heading)" }}
-                >
-                  subscription prices and account options
-                </Link>
-                .
+                Our customer support is available 24/7. Send your device make and model,
+                player name and the installation step you reached. Include the exact error
+                message if one appears. For playback problems, explain whether other channels
+                or titles work. Hide passwords and complete private playlist links in screenshots.
               </p>
             </div>
           </FadeIn>
@@ -63,8 +53,8 @@ export function InstallationCtaSection() {
           <ScrollReveal direction="up" delay={0.1} once>
             <div className="mt-10 flex flex-row items-center justify-center gap-3">
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
-                <a
-                  href={WHATSAPP_LINK}
+                <Link
+                  href={`${routes.contactUs}?enquiry=installation`}
                   className="flex min-h-12 items-center justify-center rounded-xl px-4 py-3.5 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:px-8 sm:text-[15px]"
                   style={{
                     background: "var(--hero-cta-primary-bg)",
@@ -72,8 +62,8 @@ export function InstallationCtaSection() {
                     color: "var(--hero-cta-primary-fg)",
                   }}
                 >
-                  Get Setup Help on WhatsApp →
-                </a>
+                  Contact Installation Support
+                </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="flex-1 sm:flex-initial">
                 <Link

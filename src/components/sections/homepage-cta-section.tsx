@@ -5,15 +5,7 @@ import { Container } from "@/components/layout/container";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { FadeIn } from "@/components/animation/fade-in";
 import { motion } from "framer-motion";
-import {
-  whatsappMessages,
-  whatsappUrlWithText,
-} from "@/lib/site";
 import { routes } from "@/lib/routes";
-
-const freeTrialWhatsapp = whatsappUrlWithText(
-  whatsappMessages.startFreeTrial,
-);
 
 export function HomepageCtaSection() {
   return (
@@ -43,8 +35,7 @@ export function HomepageCtaSection() {
               className="mx-auto mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[44px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              Ready to Try{" "}
-              <span style={{ color: "var(--hero-accent)" }}>Strong 8K IPTV</span>?
+              Ready to Choose Your Strong 8k Viewing Plan?
             </h2>
           </FadeIn>
 
@@ -53,16 +44,8 @@ export function HomepageCtaSection() {
               className="mx-auto mt-7 max-w-[680px] text-[15px] leading-[1.8] sm:text-base"
               style={{ color: "var(--hero-muted)" }}
             >
-              Look at the prices, test the catalogue and ask about any feature you need before
-              ordering. Refund conditions are explained in the{" "}
-              <Link
-                href={`${routes.subscriptionPlans}#refund-policy`}
-                className="font-semibold underline transition-colors hover:text-[var(--hero-accent)]"
-                style={{ color: "var(--hero-heading)" }}
-              >
-                refund policy
-              </Link>
-              .
+              Check your device, ask about your favourite content and choose the
+              connections your household needs.
             </p>
           </FadeIn>
 
@@ -71,17 +54,15 @@ export function HomepageCtaSection() {
               className="mx-auto mt-5 max-w-[680px] text-[15px] leading-[1.8] sm:text-base"
               style={{ color: "var(--hero-muted)" }}
             >
-              Start free trial · Subscribe Now · Contact Us
+              Request a free trial, compare plans, or speak to support.
             </p>
           </FadeIn>
 
           <ScrollReveal direction="up" delay={0.1} once>
-            <div className="mt-10 flex flex-row items-center justify-center gap-3 md:mt-12">
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-12">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
                 <a
-                  href={freeTrialWhatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`${routes.contactUs}?enquiry=free-trial`}
                   className="flex items-center justify-center rounded-xl px-4 py-4 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:px-8 sm:text-[15px]"
                   style={{
                     background: "var(--hero-cta-primary-bg)",
@@ -89,7 +70,7 @@ export function HomepageCtaSection() {
                     color: "var(--hero-cta-primary-fg)",
                   }}
                 >
-                  Start free trial
+                  Request a Free Trial
                 </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
@@ -102,7 +83,20 @@ export function HomepageCtaSection() {
                     color: "var(--hero-heading)",
                   }}
                 >
-                  Subscribe Now
+                  View Subscription Plans
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+                <Link
+                  href={routes.contactUs}
+                  className="flex items-center justify-center rounded-xl border px-4 py-4 text-[13px] font-bold transition-all duration-200 hover:brightness-110 sm:px-8 sm:text-[15px]"
+                  style={{
+                    borderColor: "var(--hero-pill-border)",
+                    backgroundColor: "transparent",
+                    color: "var(--hero-heading)",
+                  }}
+                >
+                  Contact Us
                 </Link>
               </motion.div>
             </div>

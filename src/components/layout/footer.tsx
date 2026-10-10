@@ -12,21 +12,22 @@ const FOOTER_LINKS = {
     { label: "Installation Guide", href: routes.installationGuide },
     { label: "Reseller Panel", href: routes.resellerPanel },
     { label: "Contact Us", href: routes.contactUs },
+    { label: "Blogs", href: routes.blogs },
   ],
   support: [
     { label: "Pricing", href: `${routes.subscriptionPlans}#pricing` },
     { label: "Free Trial", href: `${routes.contactUs}#free-trial` },
-    { label: "Device Compatibility", href: `${routes.home}#device-compatibility` },
-    { label: "FAQ", href: `${routes.home}#faq` },
+    { label: "Installation Guide", href: routes.installationGuide },
+    { label: "Blogs", href: routes.blogs },
     { label: "Refund Policy", href: `${routes.subscriptionPlans}#refund-policy` },
   ],
 };
 
 const TRUST_POINTS = [
   "40,000+ Live Channels",
-  "7-Day Money-Back Guarantee — Conditions Apply",
-  "24/7 UK Support",
-  "No Contract",
+  "140,000+ VOD Titles",
+  "24/7 Customer Support",
+  "HD, FHD and UHD",
 ];
 
 export function Footer() {
@@ -49,7 +50,7 @@ export function Footer() {
             <Link href={routes.home} className="inline-flex items-center gap-2.5 no-underline">
               <Image
                 src="/strong-8k.PNG?v=2"
-                alt="Strong 8K IPTV"
+                alt="Strong 8k"
                 width={64}
                 height={64}
                 unoptimized
@@ -61,9 +62,9 @@ export function Footer() {
               className="mt-4 max-w-sm text-sm leading-relaxed"
               style={{ color: "var(--footer-muted)" }}
             >
-              Live television and on-demand viewing for UK & USA customers —
-              40,000+ live channels, 120,000+ on-demand titles and supported
-              streams up to 8K UHD.
+              UK-focused live television and on-demand viewing — 40,000+ live
+              channels, 140,000+ VOD titles, and HD, FHD and UHD options where
+              supported.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">

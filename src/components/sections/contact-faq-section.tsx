@@ -1,45 +1,39 @@
-import { FaqAccordionSection, type FaqItem } from "@/components/sections/faq-section";
 import Link from "next/link";
+import { FaqAccordionSection, type FaqItem } from "@/components/sections/faq-section";
 import { routes } from "@/lib/routes";
 
 const CONTACT_FAQS: FaqItem[] = [
   {
-    id: "what-to-send",
-    q: "What information should I send?",
-    a: "For a technical issue, include your device model, app name, when the problem started and any error message. Keep passwords and playlist links out of public screenshots.",
+    id: "before",
+    q: "Can I ask before ordering?",
+    a: "Yes. Contact us about your device, content preferences, connections or an 8k IPTV free trial.",
   },
   {
-    id: "trial",
-    q: "How do I request a trial?",
-    a: "Use Request My Free Trial on this page, or message us on WhatsApp with your device model. The trial lasts 24 hours, needs no card details and expires without a charge.",
+    id: "activation",
+    q: "How quickly will my account be activated?",
+    a: "We confirm the activation timing with your trial or paid order.",
   },
   {
-    id: "renew",
-    q: "How do I renew?",
+    id: "player",
+    q: "Can you help with another player?",
+    a: "Send its name and your device model so we can check the account format and available assistance.",
+  },
+  {
+    id: "refund",
+    q: "Where can I read the refund terms?",
     a: (
       <>
-        Message support with your account details before the subscription ends, or choose a new
-        duration on the{" "}
+        Read the refund terms on our{" "}
         <Link
-          href={routes.subscriptionPlans}
+          href={`${routes.subscriptionPlans}#refund-policy`}
           className="font-semibold underline"
           style={{ color: "var(--hero-heading)" }}
         >
-          Pricing
+          Pricing page
         </Link>{" "}
-        page. Renewal is optional.
+        and include your order reference when requesting help.
       </>
     ),
-  },
-  {
-    id: "playback",
-    q: "Where do I report a playback problem?",
-    a: "Send it by WhatsApp or the enquiry form. Include the device, the app and what you see on screen. Support continues throughout your active subscription.",
-  },
-  {
-    id: "after-seven",
-    q: "Is support available after seven days?",
-    a: "Yes. Technical support continues after the first seven days. The 7-day money-back guarantee applies only to refund requests made within those seven days.",
   },
 ];
 
@@ -47,15 +41,10 @@ export function ContactFaqSection() {
   return (
     <FaqAccordionSection
       faqs={CONTACT_FAQS}
-      defaultOpenId="what-to-send"
+      defaultOpenId="before"
       eyebrow="FAQ"
-      description="What to send, trials, renewals and support after seven days."
-      title={
-        <>
-          Contact and Support{" "}
-          <span style={{ color: "var(--hero-accent)" }}>Questions</span>
-        </>
-      }
+      description="Trials, activation, players and refunds."
+      title={<>Answers to Common Questions About Contacting Our Team</>}
     />
   );
 }
