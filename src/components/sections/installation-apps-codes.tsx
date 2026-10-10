@@ -2,18 +2,25 @@
 
 import { Container } from "@/components/layout/container";
 import { SMART_TV_PLAYERS } from "@/data/device-guides";
+import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
 
 export function InstallationAppsCodes() {
   return (
     <>
       <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ backgroundColor: "var(--hero-base)" }}>
         <Container className="relative z-10">
-          <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
-            Recommended Apps for Different Smart TV Models
-          </h2>
-          <p className="mt-5 max-w-3xl text-[15px] leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
-            Choose from the following players where a compatible version is available for your television.
-          </p>
+          <FadeIn delay={0.05}>
+            <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
+              Recommended Apps for Different Smart TV Models
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-5 max-w-3xl text-[15px] leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
+              Choose from the following players where a compatible version is available for your television.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.16}>
           <div className="mt-8 overflow-x-auto rounded-2xl border" style={{ borderColor: "var(--feature-card-border)" }}>
             <table className="w-full min-w-[520px] text-left text-sm">
               <thead>
@@ -32,21 +39,29 @@ export function InstallationAppsCodes() {
               </tbody>
             </table>
           </div>
+          </FadeIn>
           <div className="mt-6 max-w-3xl space-y-3 text-sm leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
+            <RevealParts>
             <p>Player availability varies by television, operating system and region. The list does not mean that every app is available on every model.</p>
             <p>Check the app’s publisher and setup instructions, particularly where similarly named players appear.</p>
+            </RevealParts>
           </div>
         </Container>
       </section>
 
       <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ backgroundColor: "var(--hero-base)" }}>
         <Container className="relative z-10">
-          <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
-            Add Your Account Using the Correct Login Method
-          </h2>
-          <p className="mt-5 max-w-3xl text-[15px] leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
-            Use the setup method supplied for your account and supported by your player.
-          </p>
+          <FadeIn delay={0.05}>
+            <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
+              Add Your Account Using the Correct Login Method
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-5 max-w-3xl text-[15px] leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
+              Use the setup method supplied for your account and supported by your player.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.16}>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <article className="rounded-2xl border p-6" style={{ borderColor: "var(--feature-card-border)" }}>
               <h3 className="text-lg font-bold" style={{ color: "var(--hero-heading)" }}>Xtream Codes</h3>
@@ -67,18 +82,24 @@ export function InstallationAppsCodes() {
               </p>
             </article>
           </div>
+          </FadeIn>
+          <FadeIn delay={0.22}>
           <p className="mt-6 max-w-3xl text-sm leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
             Keep passwords and full private playlist links out of public posts and screenshots.
           </p>
+          </FadeIn>
         </Container>
       </section>
 
       <section className="relative isolate overflow-hidden py-16 md:py-24" style={{ backgroundColor: "var(--hero-base)" }}>
         <Container className="relative z-10">
-          <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
-            Check Live Channels and On-Demand Playback After Installation
-          </h2>
+          <FadeIn delay={0.05}>
+            <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
+              Check Live Channels and On-Demand Playback After Installation
+            </h2>
+          </FadeIn>
           <div className="mt-6 max-w-3xl space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+            <RevealParts>
             <p>Once the catalogue loads:</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>Open a live channel.</li>
@@ -91,6 +112,7 @@ export function InstallationAppsCodes() {
             </ul>
             <p>Our EPG coverage and catch-up availability are limited. A player supporting those features does not mean they are available for every channel or programme.</p>
             <p>If children use the device, review the player’s available parental controls.</p>
+            </RevealParts>
           </div>
         </Container>
       </section>

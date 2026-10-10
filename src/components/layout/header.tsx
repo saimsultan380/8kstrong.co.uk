@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { routes } from "@/lib/routes";
+import { HeroReveal } from "@/components/animation/hero-reveal";
 
 const NAV_LINKS = [
   { label: "Home", href: routes.home },
@@ -36,35 +37,38 @@ export function Header() {
           className="glass-nav pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-2.5 sm:px-5 sm:py-3 lg:max-w-6xl"
         >
           {/* Logo */}
-          <Link
-            href={routes.home}
-            id="hero-logo"
-            className="flex shrink-0 items-center gap-2.5 no-underline"
-            onClick={closeMenu}
-          >
-            <Image
-              src="/strong-8k.PNG?v=2"
-              alt="Strong 8k"
-              width={64}
-              height={64}
-              loading="eager"
-              unoptimized
-              className="h-12 w-12 object-contain sm:h-[3.25rem] sm:w-[3.25rem]"
-            />
-          </Link>
+          <HeroReveal variant="media" delay={0.04} className="shrink-0">
+            <Link
+              href={routes.home}
+              id="hero-logo"
+              className="flex shrink-0 items-center gap-2.5 no-underline"
+              onClick={closeMenu}
+            >
+              <Image
+                src="/strong-8k.PNG?v=2"
+                alt="Strong 8k"
+                width={64}
+                height={64}
+                loading="eager"
+                unoptimized
+                className="h-12 w-12 object-contain sm:h-[3.25rem] sm:w-[3.25rem]"
+              />
+            </Link>
+          </HeroReveal>
 
           {/* Nav links + actions */}
           <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
             <div className="hidden items-center gap-6 md:flex">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm font-medium transition-colors duration-150 hover:text-[var(--hero-accent)]"
-                  style={{ color: "var(--hero-nav-link)" }}
-                >
-                  {link.label}
-                </Link>
+              {NAV_LINKS.map((link, index) => (
+                <HeroReveal key={link.label} delay={0.08 + index * 0.04}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium transition-colors duration-150 hover:text-[var(--hero-accent)]"
+                    style={{ color: "var(--hero-nav-link)" }}
+                  >
+                    {link.label}
+                  </Link>
+                </HeroReveal>
               ))}
             </div>
 
@@ -85,10 +89,10 @@ export function Header() {
             </button>
 
             {/* Desktop CTA */}
+            <HeroReveal variant="cta" delay={0.32} className="hidden md:inline-flex">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="hidden md:inline-flex"
             >
               <Link
                 href={routes.subscriptionPlans}
@@ -101,6 +105,7 @@ export function Header() {
                 View Plans
               </Link>
             </motion.div>
+            </HeroReveal>
           </div>
         </nav>
       </header>

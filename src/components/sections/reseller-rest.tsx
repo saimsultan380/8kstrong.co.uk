@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { routes } from "@/lib/routes";
+import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
 
 function Block({
   id,
@@ -17,11 +19,13 @@ function Block({
     <section id={id} className="relative isolate overflow-hidden py-16 md:py-24" style={{ backgroundColor: "var(--hero-base)" }}>
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
-            {title}
-          </h2>
+          <FadeIn delay={0.05}>
+            <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
+              {title}
+            </h2>
+          </FadeIn>
           <div className="mt-6 space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
-            {children}
+            <RevealParts>{children}</RevealParts>
           </div>
         </div>
       </Container>

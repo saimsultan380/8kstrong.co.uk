@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/container";
 import { Mail, MessageCircle } from "lucide-react";
 import { siteConfig, whatsappUrl } from "@/lib/site";
 import { routes } from "@/lib/routes";
+import { FadeIn } from "@/components/animation/fade-in";
 
 const FOOTER_LINKS = {
   service: [
@@ -46,6 +47,7 @@ export function Footer() {
       <Container className="py-14 md:py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr] lg:gap-16">
           {/* Brand column */}
+          <FadeIn delay={0.05}>
           <div>
             <Link href={routes.home} className="inline-flex items-center gap-2.5 no-underline">
               <Image
@@ -109,9 +111,10 @@ export function Footer() {
               </a>
             </div>
           </div>
+          </FadeIn>
 
           {/* Link columns */}
-          <div className="grid gap-10 sm:grid-cols-2">
+          <FadeIn delay={0.12} className="grid gap-10 sm:grid-cols-2">
             {Object.entries(FOOTER_LINKS).map(([group, links]) => (
               <div key={group}>
                 <h3
@@ -135,10 +138,11 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </div>
 
         {/* Bottom bar */}
+        <FadeIn delay={0.18}>
         <div
           className="mt-12 flex flex-col gap-4 border-t pt-8 md:flex-row md:items-center md:justify-between"
           style={{ borderColor: "var(--footer-border)" }}
@@ -155,6 +159,7 @@ export function Footer() {
             location and applicable rights.
           </p>
         </div>
+        </FadeIn>
       </Container>
     </footer>
   );

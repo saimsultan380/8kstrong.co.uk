@@ -8,6 +8,9 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { pageBreadcrumbs } from "@/lib/breadcrumbs";
 import { createPageMetadata, pageDescriptions, pageTitles } from "@/lib/site";
 import { routes } from "@/lib/routes";
+import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
+import { HeroReveal } from "@/components/animation/hero-reveal";
 
 export const metadata: Metadata = createPageMetadata({
   title: pageTitles.blogs,
@@ -20,11 +23,13 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <section className="relative isolate overflow-hidden py-16 md:py-20" style={{ backgroundColor: "var(--hero-base)" }}>
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
-            {title}
-          </h2>
+          <FadeIn delay={0.05}>
+            <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl" style={{ color: "var(--hero-heading)" }}>
+              {title}
+            </h2>
+          </FadeIn>
           <div className="mt-6 space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
-            {children}
+            <RevealParts>{children}</RevealParts>
           </div>
         </div>
       </Container>
@@ -41,18 +46,24 @@ export default function BlogsPage() {
       <Breadcrumbs items={pageBreadcrumbs.blogs} />
       <section className="relative isolate overflow-hidden pb-10 pt-32 sm:pt-36">
         <Container className="relative z-10 text-center">
+          <HeroReveal delay={0.05}>
           <h1 className="mx-auto max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl" style={{ color: "var(--hero-heading)" }}>
             Strong 8k IPTV Guides for Setup, Subscriptions and Support
           </h1>
+          </HeroReveal>
+          <HeroReveal delay={0.12}>
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-sm leading-[1.8] sm:text-base" style={{ color: "var(--hero-muted)" }}>
             <p>The Strong 8k IPTV blog answers common questions about devices, subscriptions and everyday viewing.</p>
             <p>Find help with login problems, understand the difference between a player and a service account, and check what to look for when comparing online reviews.</p>
             <p>For a question about your own account, our customer support is available 24/7.</p>
           </div>
+          </HeroReveal>
+          <HeroReveal variant="cta" delay={0.2}>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href={routes.installationGuide} className="inline-flex rounded-xl bg-gradient-brand px-6 py-3 text-sm font-bold text-black">Read the Installation Guide</Link>
             <Link href={routes.contactUs} className="inline-flex rounded-xl border px-6 py-3 text-sm font-semibold" style={{ borderColor: "var(--hero-btn-border)", color: "var(--hero-heading)" }}>Contact Customer Support</Link>
           </div>
+          </HeroReveal>
         </Container>
       </section>
 

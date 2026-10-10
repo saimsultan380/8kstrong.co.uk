@@ -4,6 +4,7 @@ import { Tv, Trophy, Film, Clapperboard, Newspaper, Baby, Globe, Music } from "l
 import { Container } from "@/components/layout/container";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
 
 const INCLUDED = [
   "40,000+ available live channels.",
@@ -155,6 +156,7 @@ export function EverythingIncludedSection() {
         </div>
 
         <div className="mt-10 max-w-3xl space-y-4 text-sm leading-[1.75] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+          <RevealParts>
           <p>
             For live television, save your regular channels as favourites if the player
             supports it. This gives you a shorter list for everyday use.
@@ -172,6 +174,7 @@ export function EverythingIncludedSection() {
             The categories describe the type of content offered. Ask us for current
             availability rather than assuming that a particular channel or title is included.
           </p>
+          </RevealParts>
         </div>
       </Container>
     </section>

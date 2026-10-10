@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
+import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { DEVICE_GUIDES, type DeviceGuide } from "@/data/device-guides";
 import { routes } from "@/lib/routes";
 
@@ -11,6 +13,7 @@ const DEVICES = DEVICE_GUIDES;
 function GuideBody({ device }: { device: DeviceGuide }) {
   return (
     <div className="space-y-6">
+      <RevealParts>
       {device.intro ? (
         <p className="text-[15px] leading-[1.75]" style={{ color: "var(--hero-muted)" }}>
           {device.intro}
@@ -81,6 +84,7 @@ function GuideBody({ device }: { device: DeviceGuide }) {
           {device.helpLabel}
         </Link>
       </div>
+      </RevealParts>
     </div>
   );
 }
@@ -114,11 +118,11 @@ export function InstallationDeviceSelector() {
         </FadeIn>
 
         <nav className="mt-10 flex flex-wrap gap-2 sm:gap-3" aria-label="Device guides">
-          {DEVICES.map((device) => {
+          {DEVICES.map((device, index) => {
             const Icon = device.Icon;
             return (
+              <FadeIn key={device.id} delay={Math.min(0.04 * index, 0.36)}>
               <a
-                key={device.id}
                 href={`#${device.id}`}
                 className="inline-flex items-center gap-2 rounded-xl border px-3.5 py-2.5 text-sm font-semibold transition-all duration-200 hover:border-[var(--hero-accent)] hover:text-[var(--hero-accent)]"
                 style={{
@@ -131,12 +135,14 @@ export function InstallationDeviceSelector() {
                 <span className="hidden sm:inline">{device.label}</span>
                 <span className="sm:hidden">{device.shortLabel}</span>
               </a>
+              </FadeIn>
             );
           })}
         </nav>
 
         <div className="mt-10 space-y-6">
-          {DEVICES.map((device) => (
+          {DEVICES.map((device, index) => (
+            <ScrollReveal key={device.id} delay={Math.min(index * 0.04, 0.24)} once>
             <article
               key={device.id}
               id={device.id}
@@ -156,6 +162,7 @@ export function InstallationDeviceSelector() {
                 <GuideBody device={device} />
               </div>
             </article>
+            </ScrollReveal>
           ))}
         </div>
       </Container>

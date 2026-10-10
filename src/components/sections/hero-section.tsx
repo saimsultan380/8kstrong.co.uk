@@ -103,14 +103,13 @@ export function HeroSection() {
             </div>
           </HeroReveal>
 
-          <HeroReveal delay={0.36}>
-            <ul className="mt-5 grid grid-cols-3 gap-2 text-center sm:gap-4 sm:text-left lg:max-w-[680px]">
-              {HERO_FEATURES.map((feature) => {
+          <ul className="mt-5 grid grid-cols-3 gap-2 text-center sm:gap-4 sm:text-left lg:max-w-[680px]">
+              {HERO_FEATURES.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
+                  <HeroReveal key={feature.label} delay={0.32 + index * 0.06} className="h-full">
                   <li
-                    key={feature.label}
-                    className="flex flex-col items-center gap-1.5 border-r px-1 last:border-r-0 sm:flex-row sm:items-start sm:pr-4 sm:text-left"
+                    className={`flex h-full flex-col items-center gap-1.5 px-1 sm:flex-row sm:items-start sm:pr-4 sm:text-left${index < HERO_FEATURES.length - 1 ? " border-r" : ""}`}
                     style={{ borderColor: "var(--hero-divider)" }}
                   >
                     <Icon
@@ -126,10 +125,10 @@ export function HeroSection() {
                       {feature.label}
                     </span>
                   </li>
+                  </HeroReveal>
                 );
               })}
             </ul>
-          </HeroReveal>
         </div>
       </Container>
     </section>

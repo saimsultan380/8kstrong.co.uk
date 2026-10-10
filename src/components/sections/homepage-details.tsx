@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
+import { RevealParts } from "@/components/animation/reveal-parts";
 import { routes } from "@/lib/routes";
 
 const DEVICES = [
@@ -36,7 +37,7 @@ function Block({
           </h2>
         </FadeIn>
         <div className="mt-6 max-w-3xl space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
-          {children}
+          <RevealParts>{children}</RevealParts>
         </div>
       </Container>
     </section>
@@ -117,13 +118,18 @@ export function HomepageDetails() {
 
       <section id="device-compatibility" className="relative isolate overflow-hidden py-16 md:py-24" style={{ backgroundColor: "var(--hero-base)" }}>
         <Container className="relative z-10">
-          <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]" style={{ color: "var(--hero-heading)" }}>
-            Watch Strong 8k on Your Preferred Supported Device
-          </h2>
-          <p className="mt-6 max-w-3xl text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
-            We support the main device families used for IPTV, subject to the exact
-            model, operating system and compatible player.
-          </p>
+          <FadeIn delay={0.05}>
+            <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[42px]" style={{ color: "var(--hero-heading)" }}>
+              Watch Strong 8k on Your Preferred Supported Device
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-6 max-w-3xl text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+              We support the main device families used for IPTV, subject to the exact
+              model, operating system and compatible player.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.16}>
           <div className="mt-8 overflow-x-auto rounded-2xl border" style={{ borderColor: "var(--feature-card-border)" }}>
             <table className="w-full min-w-[560px] text-left text-sm">
               <thead>
@@ -142,12 +148,15 @@ export function HomepageDetails() {
               </tbody>
             </table>
           </div>
+          </FadeIn>
           <div className="mt-6 max-w-3xl space-y-4 text-sm leading-[1.8] sm:text-[15px]" style={{ color: "var(--hero-muted)" }}>
+            <RevealParts>
             <p>If you already use another device or player, tell us its name before ordering. We can check its account requirements.</p>
             <p>The installation guide also explains what to check for Apple TV, MAG, Formuler, Enigma2, Linux and browser viewing.</p>
             <Link href={routes.installationGuide} className={linkClass} style={{ color: "var(--hero-heading)" }}>
               Find Your Installation Instructions
             </Link>
+            </RevealParts>
           </div>
         </Container>
       </section>
