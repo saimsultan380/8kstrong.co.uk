@@ -62,7 +62,7 @@ export function enquiryWhatsApp(enquiry: string): string {
 
 /** Exact SERP titles (shown in Google + browser tab) */
 export const pageTitles = {
-  home: "Strong 8k - Premium UHD IPTV Subscription For UK",
+  home: "Strong 8k - Premium UHD IPTV Subscription With 40k+ Channels",
   subscriptionPlans:
     "Strong 8k IPTV Subscription Prices for Multiple UK Connections",
   installationGuide: "Strong 8k IPTV Installation Guide for All Supported Devices",
