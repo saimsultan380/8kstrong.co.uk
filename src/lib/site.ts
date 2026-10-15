@@ -1,5 +1,5 @@
 /**
- * Site-wide brand & SEO defaults for Strong 8K IPTV.
+ * Site-wide brand & SEO defaults for Strong 8k IPTV.
  *
  * Canonical rule: always HTTPS + non-www + trailing slash
  * e.g. https://8k-strong.co.uk/pricing/
@@ -62,7 +62,7 @@ export function enquiryWhatsApp(enquiry: string): string {
 
 /** Exact SERP titles (shown in Google + browser tab) */
 export const pageTitles = {
-  home: "Strong 8k - Premium UHD IPTV Subscription For UK with 40k+ Channels",
+  home: "Strong 8k - Premium UHD IPTV Subscription For UK",
   subscriptionPlans:
     "Strong 8k IPTV Subscription Prices for Multiple UK Connections",
   installationGuide: "Strong 8k IPTV Installation Guide for All Supported Devices",
@@ -202,11 +202,20 @@ export const siteMetadataBase: Metadata = {
     siteName: siteConfig.name,
     title: pageTitles.home,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/brand-logo.png",
+        width: 512,
+        height: 512,
+        alt: "Strong 8k",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: pageTitles.home,
     description: siteConfig.description,
+    images: ["/brand-logo.png"],
   },
   robots: {
     index: true,

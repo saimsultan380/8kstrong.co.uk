@@ -70,7 +70,7 @@ export function PricingSection() {
                         style={{ background: "var(--grad-brand)" }}
                         aria-hidden
                       />
-                      <span style={{ color: "rgba(255, 255, 255, 0.82)" }}>{feature}</span>
+                      <span style={{ color: "rgba(255, 255, 255)" }}>{feature}</span>
                     </li>
                   ))}
                 </ul>

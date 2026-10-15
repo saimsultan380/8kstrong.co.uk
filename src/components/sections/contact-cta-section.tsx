@@ -4,8 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
-
-const WHATSAPP_LINK = "https://wa.me/447460676632?text=Start-free-trial";
+import { enquiryWhatsApp } from "@/lib/site";
 
 export function ContactCtaSection() {
   return (
@@ -57,7 +56,7 @@ export function ContactCtaSection() {
           <ScrollReveal direction="up" delay={0.1} once>
             <div className="mt-8 flex justify-center">
               <a
-                href={WHATSAPP_LINK}
+                href={enquiryWhatsApp("free-trial")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold transition-all duration-200 hover:brightness-110 sm:text-[15px]"

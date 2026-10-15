@@ -5,9 +5,7 @@ import { MessageCircle, Mail } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { FadeIn } from "@/components/animation/fade-in";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
-import { siteConfig } from "@/lib/site";
-
-const WHATSAPP_LINK = "https://wa.me/447460676632";
+import { siteConfig, whatsappUrl, whatsappUrlWithText } from "@/lib/site";
 
 const ENQUIRY_TYPES = [
   "Free trial",
@@ -75,7 +73,7 @@ export function ContactMethodsForm() {
     setReplyError(false);
 
     const text = [
-      "Strong 8K Contact Form",
+      "Strong 8k Contact Form",
       `Name: ${name}`,
       `Email: ${email || "Not provided"}`,
       `WhatsApp: ${whatsapp || "Not provided"}`,
@@ -85,11 +83,7 @@ export function ContactMethodsForm() {
       `Message: ${message}`,
     ].join("\n");
 
-    window.open(
-      `${WHATSAPP_LINK}?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    window.open(whatsappUrlWithText(text), "_blank", "noopener,noreferrer");
     setSubmitted(true);
     form.reset();
   };
@@ -121,7 +115,7 @@ export function ContactMethodsForm() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <ScrollReveal direction="up" delay={0.05} once>
             <a
-              href={WHATSAPP_LINK}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-full flex-col rounded-2xl border p-5 transition-colors hover:border-[var(--hero-accent)] sm:p-6"
@@ -213,7 +207,7 @@ export function ContactMethodsForm() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@example.com"
+                  placeholder="you@strong8k.com"
                   className={inputClass}
                   style={inputStyle}
                 />

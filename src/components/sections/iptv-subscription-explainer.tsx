@@ -34,7 +34,7 @@ export function IptvSubscriptionExplainer() {
               className="mt-4 max-w-xl text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-[48px]"
               style={{ color: "var(--hero-heading)" }}
             >
-              What is Strong 8K IPTV?
+              What is Strong 8k IPTV?
             </h2>
           </FadeIn>
           <FadeIn delay={0.15}>

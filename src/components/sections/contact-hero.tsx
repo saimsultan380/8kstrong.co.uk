@@ -4,8 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { HeroReveal } from "@/components/animation/hero-reveal";
 import { HeroTitleReveal } from "@/components/animation/hero-title-reveal";
-
-const WHATSAPP_LINK = "https://wa.me/447460676632";
+import { whatsappUrl } from "@/lib/site";
 
 export function ContactHero() {
   return (
@@ -52,7 +51,9 @@ export function ContactHero() {
         <HeroReveal variant="cta" delay={0.28}>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={WHATSAPP_LINK}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold transition-all duration-200 hover:brightness-110 sm:text-[15px]"
               style={{
                 background: "var(--hero-cta-primary-bg)",
