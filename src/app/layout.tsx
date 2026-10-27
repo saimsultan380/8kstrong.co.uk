@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -9,6 +10,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { siteJsonLd } from "@/lib/breadcrumbs";
 import { canonicalUrl, siteMetadataBase } from "@/lib/site";
 import { routes } from "@/lib/routes";
+
+const GA_MEASUREMENT_ID = "G-LL2KQ70645";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +69,18 @@ export default function RootLayout({
         <JsonLd data={siteJsonLd()} />
       </head>
       <body className="relative min-h-full flex flex-col bg-black text-white">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
